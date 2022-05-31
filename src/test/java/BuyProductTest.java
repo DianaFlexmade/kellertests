@@ -1,4 +1,3 @@
-import ShopPages.MainPage;
 import ShopPages.PDPage;
 import com.codeborne.selenide.Condition;
 import org.testng.annotations.Test;
@@ -21,10 +20,5 @@ public class BuyProductTest extends BaseTest{
     @Test(description = "Тест на успішну покупку товара")
     public void purchaseProductTest() {
 
-    }
-
-    //TODO
-    @Test(description = "Тест на неуспішну покупку товара через неправильні дані картки")
-    public void wrongCredentialsTest() {
     }
 }

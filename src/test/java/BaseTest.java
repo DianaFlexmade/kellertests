@@ -1,10 +1,6 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.*;
 
 abstract public class BaseTest {
@@ -14,9 +10,10 @@ abstract public class BaseTest {
         Configuration.baseUrl = "https://keller:sports17@stage.keller-sports.com";
         Configuration.browserSize = "1440x900";
         Configuration.headless = false;
+        Configuration.browser = "сhrome";
     }
 
-    @BeforeTest
+    @BeforeMethod
     @Parameters("browser")
     public void setup(String browser) throws Exception{
 
@@ -26,7 +23,7 @@ abstract public class BaseTest {
         }
         else if(browser.equalsIgnoreCase("chrome")){
             WebDriverManager.chromedriver().setup();
-            Configuration.browser = "chrome";
+            Configuration.browser ="chrome";
         }
         else{
             throw new Exception("Browser is not correct");
