@@ -15,7 +15,9 @@ abstract public class BaseTest {
 
     @BeforeMethod
     @Parameters("browser")
+
     public void setup(String browser) throws Exception{
+            setUp();
 
         if(browser.equalsIgnoreCase("firefox")){
             WebDriverManager.firefoxdriver().setup();
@@ -28,11 +30,6 @@ abstract public class BaseTest {
         else{
             throw new Exception("Browser is not correct");
         }
-    }
-
-    @BeforeMethod
-    public void init() {
-        setUp();
     }
 
     @AfterMethod
