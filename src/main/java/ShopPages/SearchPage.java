@@ -13,7 +13,7 @@ public class SearchPage extends BasePage {
         return searchResult;
     }
 
-    public void selectRecommendedProduct(){
-        recommendedProduct.click();
+    public void selectRecommendedProduct() {
+        click(recommendedProduct);
     }
 }

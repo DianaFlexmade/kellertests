@@ -2,32 +2,29 @@ package ShopPages;
 
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.actions;
 
 public class PDPage extends BasePage{
     private final SelenideElement addToBasketButton = $("#js_add_to_basket");
     private final SelenideElement miniBasketQuantity = $("#js_product_quantity");
-    private final SelenideElement keyfactsScroll = $("section > .js-navi-page-content-item-label");
-
-    private SelenideElement pdpWishlistIcon = $("div > .product-parameters__add-to-wishlist-btn");
+    private SelenideElement pdpWishlistIcon = $("div .wishlist-heart--animated");
     private SelenideElement wishListButton = $(".js-miniwishlist");
-
-    public void scrollToKeyFacts() {
-        keyfactsScroll.scrollIntoView(true);
-    }
     public void addToBasket() {
-        addToBasketButton.click();
+        actions().moveToElement(addToBasketButton).click(addToBasketButton).perform();
+        click(addToBasketButton);
     }
     public SelenideElement checkMiniBasket() {
         return miniBasketQuantity;
     }
 
     public void addToWishlist() {
-        pdpWishlistIcon.click();
+        actions().moveToElement(pdpWishlistIcon).click(pdpWishlistIcon).perform();
+        click(pdpWishlistIcon);
     }
 
     public WishlistPage goToWishlist(){
         WishlistPage wishlistPage = new WishlistPage();
-        wishListButton.click();
+        click(wishListButton);
         return wishlistPage;
     }
 }
