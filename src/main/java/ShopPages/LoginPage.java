@@ -5,6 +5,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -22,7 +23,7 @@ public class LoginPage extends BasePage {
     private final SelenideElement weakPassMessage = $(byXpath("(//*[@class = 'input-box__note input-box__note--error']) [2]"));
     private final SelenideElement wrongPassMessage = $("div> .input-box__note--error");
     private final SelenideElement myAccount = $(".test-logged-link");
-    private final SelenideElement myOrdersText = $("div > h1");
+    private final SelenideElement myAccountText = $("span .account__logout-link");
 
 
     public SelenideElement getSuccessRegMessage() {
@@ -59,14 +60,9 @@ public class LoginPage extends BasePage {
         loginButton.click();
     }
 
-    public void goToMyAccount() {
-        myAccount.should(Condition.exist);
-        myAccount.click();
-    }
-
-    public String checkMyOrdersPage(){
-        myOrdersText.should(Condition.exist);
-        return myOrdersText.text();
+    public SelenideElement checkMyAccount() {
+        myAccount.hover();
+        return myAccountText;
     }
 
 }

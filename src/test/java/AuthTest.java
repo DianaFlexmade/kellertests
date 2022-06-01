@@ -8,14 +8,13 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class AuthTest extends BaseTest{
 
-    //TODO fix test
     @Test(description = "Тест на успішну авторизацію користувача")
     public void successAuthTest()  {
         open("/");
         LoginPage authPage = new LoginPage();
         authPage.authorizeUser(TestValues.USER_EMAIL, TestValues.USER_PASS);
-        authPage.goToMyAccount();
-        Assert.assertEquals(authPage.checkMyOrdersPage(), TestValues.MY_ORDERS_TEXT);
+        authPage.checkMyAccount();
+        Assert.assertEquals(authPage.checkMyAccount().text(), TestValues.MY_ACCOUNT_TEXT);
     }
 
     @Test(description = "Тест на неуспішну авторизацію із неправильним паролем")
