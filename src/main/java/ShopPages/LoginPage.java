@@ -37,7 +37,7 @@ public class LoginPage extends BasePage {
         return wrongPassMessage;
     }
 
-    public void registerUser(String emailFieldValue, String passwordFieldValue, String repeatPasswordFieldValue) throws InterruptedException {
+    public void registerUser(String emailFieldValue, String passwordFieldValue, String repeatPasswordFieldValue) {
         LoginPage loginPage = new LoginPage();
         loginPage.acceptCookie();
         loginPage.openLoginPage();
@@ -49,15 +49,14 @@ public class LoginPage extends BasePage {
         click(registerButton);
     }
 
-    public MainPage authorizeUser(String emailFieldValue, String passwordFieldValue) throws InterruptedException {
+    public void authorizeUser(String emailFieldValue, String passwordFieldValue) {
         MainPage mainPage = new MainPage();
         mainPage.acceptCookie();
         mainPage.openLoginPage();
+        loginField.click();
         loginField.sendKeys(emailFieldValue);
         passwordField.sendKeys(passwordFieldValue);
         loginButton.click();
-
-        return mainPage;
     }
 
     public void goToMyAccount() {
@@ -66,6 +65,7 @@ public class LoginPage extends BasePage {
     }
 
     public String checkMyOrdersPage(){
+        myOrdersText.shouldBe(Condition.visible);
         return myOrdersText.text();
     }
 
