@@ -11,9 +11,8 @@ abstract public class BaseTest {
     Logger logger = LoggerFactory.getLogger(BaseTest.class);
     public void setUp() {
         Configuration.driverManagerEnabled = true;
-        Configuration.browser = "chrome";
         Configuration.baseUrl = "https://keller:sports17@stage.keller-sports.com";
-        Configuration.browserSize = "1440x900";
+        Configuration.browserSize = "1600x900";
         Configuration.headless = false;
         Configuration.timeout = 6000;
     }

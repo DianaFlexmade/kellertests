@@ -12,7 +12,7 @@ public class LoginPage extends BasePage {
 
     private final SelenideElement registerLink = $( ".test-register-popup-button");
     private final SelenideElement emailField = $(".test-register-email");
-    private final SelenideElement loginField = $(".test-login-email");
+    private final SelenideElement loginField = $("#js_login_email");
     private final SelenideElement passwordField = $("input[name='password']");
     private final SelenideElement repeatPasswordField = $("input[name='password_confirmation']");
     private final SelenideElement termsCheckbox = $("label[for='terms-agree']");
@@ -52,7 +52,6 @@ public class LoginPage extends BasePage {
     public MainPage authorizeUser(String emailFieldValue, String passwordFieldValue) throws InterruptedException {
         MainPage mainPage = new MainPage();
         mainPage.acceptCookie();
-        mainPage.closeCountryLayer();
         mainPage.openLoginPage();
         loginField.sendKeys(emailFieldValue);
         passwordField.sendKeys(passwordFieldValue);
