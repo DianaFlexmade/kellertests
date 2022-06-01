@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class LoginPage extends BasePage {
 
     private final SelenideElement registerLink = $( ".test-register-popup-button");
-    private final SelenideElement emailField = $(".test-register-email");
+    private final SelenideElement emailField = $("input[name='email']");
     private final SelenideElement loginField = $("#js_login_email");
     private final SelenideElement passwordField = $("input[name='password']");
     private final SelenideElement repeatPasswordField = $("input[name='password_confirmation']");
