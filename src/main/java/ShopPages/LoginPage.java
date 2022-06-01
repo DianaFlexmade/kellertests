@@ -53,19 +53,19 @@ public class LoginPage extends BasePage {
         MainPage mainPage = new MainPage();
         mainPage.acceptCookie();
         mainPage.openLoginPage();
-        loginField.click();
+        click(loginField);
         loginField.sendKeys(emailFieldValue);
         passwordField.sendKeys(passwordFieldValue);
         loginButton.click();
     }
 
     public void goToMyAccount() {
-        myAccount.shouldBe(Condition.appear);
+        myAccount.should(Condition.exist);
         myAccount.click();
     }
 
     public String checkMyOrdersPage(){
-        myOrdersText.shouldBe(Condition.visible);
+        myOrdersText.should(Condition.exist);
         return myOrdersText.text();
     }
 
