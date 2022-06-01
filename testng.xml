@@ -3,7 +3,7 @@
     <test name="FirefoxTest" >
         <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="AuthTest"> </class>
+<!--            <class name="AuthTest"> </class>-->
             <class name="RegTest" > </class>
             <class name="BuyProductTest"> </class>
             <class name="WishlistTest"> </class>
@@ -13,7 +13,7 @@
     <test name="ChromeTest" >
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="AuthTest"> </class>
+<!--            <class name="AuthTest"> </class>-->
             <class name="RegTest" > </class>
             <class name="BuyProductTest"> </class>
             <class name="WishlistTest"> </class>
