@@ -21,14 +21,13 @@ public class WishlistTest extends BaseTest {
     }
 
     @Test(description = "Тест на видалення товара з вішліста")
-    public void removeFromWishlistTest() throws InterruptedException {
+    public void removeFromWishlistTest() {
         PDPage pdPage = new PDPage();
         WishlistPage wishlistPage = new WishlistPage();
         open("/p/nike-fury-3.0-headband-REQNI00O000.html");
         pdPage.acceptCookie();
         pdPage.addToWishlist();
         pdPage.goToWishlist();
-        wishlistPage.checkWishlistAmount();
         wishlistPage.removeItemFromWishlist();
         wishlistPage.removeText().shouldHave(Condition.text("The article has been removed from your wishlist."));
     }

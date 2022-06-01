@@ -40,14 +40,13 @@ public class LoginPage extends BasePage {
     public void registerUser(String emailFieldValue, String passwordFieldValue, String repeatPasswordFieldValue) throws InterruptedException {
         LoginPage loginPage = new LoginPage();
         loginPage.acceptCookie();
-        loginPage.closeCountryLayer();
         loginPage.openLoginPage();
         click($( ".test-register-popup-button"));
         emailField.sendKeys(emailFieldValue);
         passwordField.sendKeys(passwordFieldValue);
         repeatPasswordField.sendKeys(repeatPasswordFieldValue);
         termsCheckbox.click(ClickOptions.usingDefaultMethod().offset(-150,0));
-        registerButton.click();
+        click(registerButton);
     }
 
     public MainPage authorizeUser(String emailFieldValue, String passwordFieldValue) throws InterruptedException {
