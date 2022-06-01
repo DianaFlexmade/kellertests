@@ -14,7 +14,7 @@ abstract public class BaseTest {
         Configuration.browser = "chrome";
         Configuration.baseUrl = "https://keller:sports17@stage.keller-sports.com";
         Configuration.browserSize = "1440x900";
-        Configuration.headless = true;
+        Configuration.headless = false;
         Configuration.timeout = 6000;
     }
 
