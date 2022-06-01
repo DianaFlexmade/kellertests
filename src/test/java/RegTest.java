@@ -10,21 +10,22 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class RegTest extends BaseTest {
     Faker faker = new Faker();
+    private final String email = faker.internet().emailAddress();
 
     @Test(description = "Тест на успішну реєстрацію користувача")
-    public void successRegTest() throws InterruptedException {
+    public void successRegTest() {
         open("/");
         LoginPage authPage = new LoginPage();
-        authPage.registerUser(faker.internet().emailAddress(), "testPass1qQ!", "testPass1qQ!");
-        authPage.getSuccessRegMessage().shouldHave(Condition.text(TestValues.SUCCESS_LOGIN_MESSAGE));
-        Assert.assertEquals(authPage.getSuccessRegMessage().text(), TestValues.SUCCESS_LOGIN_MESSAGE);
+        authPage.registerUser(email, "testPass1qQ!", "testPass1qQ!");
+        authPage.getSuccessRegMessage().should(Condition.exist);
+        Assert.assertEquals(authPage.getSuccessRegMessage().text(), TestValues.CLOSE_MESSAGE);
     }
 
     @Test(description = "Тест на неуспішну реєстрацію зі слабким паролем")
-    public void weakPassTest() throws InterruptedException {
+    public void weakPassTest() {
         open("/");
         LoginPage authPage = new LoginPage();
-        authPage.registerUser(faker.internet().emailAddress(), "testPass", "testPass");
+        authPage.registerUser(email, "testPass", "testPass");
         authPage.getWeakPassMessage().shouldHave(Condition.text(TestValues.WEAK_PASS_MESSAGE));
         Assert.assertEquals(authPage.getWeakPassMessage().text(), TestValues.WEAK_PASS_MESSAGE);
     }

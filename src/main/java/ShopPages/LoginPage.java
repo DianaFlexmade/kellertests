@@ -12,14 +12,14 @@ import static com.codeborne.selenide.Selenide.$;
 public class LoginPage extends BasePage {
 
     private final SelenideElement registerLink = $( ".test-register-popup-button");
-    private final SelenideElement emailField = $("input[name='email']");
+    private final SelenideElement emailField = $("input[type='email']");
     private final SelenideElement loginField = $("#js_login_email");
     private final SelenideElement passwordField = $("input[name='password']");
     private final SelenideElement repeatPasswordField = $("input[name='password_confirmation']");
     private final SelenideElement termsCheckbox = $("label[for='terms-agree']");
     private final SelenideElement registerButton = $(".test-register-button");
     private final SelenideElement loginButton = $(".test-login-button");
-    private final SelenideElement successRegMessage = $("h4[class='layer-title']");
+    private final SelenideElement closeRegButton = $(".btn-login");
     private final SelenideElement weakPassMessage = $(byXpath("(//*[@class = 'input-box__note input-box__note--error']) [2]"));
     private final SelenideElement wrongPassMessage = $("div> .input-box__note--error");
     private final SelenideElement myAccount = $(".test-logged-link");
@@ -27,7 +27,7 @@ public class LoginPage extends BasePage {
 
 
     public SelenideElement getSuccessRegMessage() {
-        return successRegMessage;
+        return closeRegButton;
     }
 
     public SelenideElement getWeakPassMessage() {
@@ -43,6 +43,7 @@ public class LoginPage extends BasePage {
         loginPage.acceptCookie();
         loginPage.openLoginPage();
         click($( ".test-register-popup-button"));
+        click(emailField);
         emailField.sendKeys(emailFieldValue);
         passwordField.sendKeys(passwordFieldValue);
         repeatPasswordField.sendKeys(repeatPasswordFieldValue);

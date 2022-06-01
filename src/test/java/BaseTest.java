@@ -14,7 +14,7 @@ abstract public class BaseTest {
         Configuration.baseUrl = "https://keller:sports17@stage.keller-sports.com";
         Configuration.browserSize = "1600x900";
         Configuration.headless = false;
-        Configuration.timeout = 6000;
+        Configuration.timeout = 7000;
     }
 
     @BeforeMethod
