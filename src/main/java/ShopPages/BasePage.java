@@ -11,11 +11,12 @@ public class BasePage {
     public void acceptCookie(){
         $("#uc-btn-accept-banner").click();
     }
-    public void closeCountryLayer() {
-        $("#js_country-layer-close-icon").click();
-    }
 
     public void openLoginPage(){
         $(".test-login-link").click();
+    }
+
+    public void closeCountryLayer() {
+        $("#js_country-layer-close-icon").click();
     }
 }

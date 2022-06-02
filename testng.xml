@@ -5,8 +5,8 @@
         <classes>
             <class name="AuthTest"> </class>
             <class name="RegTest" > </class>
-<!--            <class name="BuyProductTest"> </class>-->
-<!--            <class name="WishlistTest"> </class>-->
+            <class name="BuyProductTest"> </class>
+            <class name="WishlistTest"> </class>
             <class name="SearchTest"> </class>
         </classes>
     </test>
@@ -15,8 +15,8 @@
         <classes>
             <class name="AuthTest"> </class>
             <class name="RegTest" > </class>
-<!--            <class name="BuyProductTest"> </class>-->
-<!--            <class name="WishlistTest"> </class>-->
+            <class name="BuyProductTest"> </class>
+            <class name="WishlistTest"> </class>
             <class name="SearchTest"> </class>
         </classes>
     </test>

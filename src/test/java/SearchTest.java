@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class SearchTest extends BaseTest {
 
     @Test(description = "Тест на коректний пошук рекомендованого товара")
-    public void recommendedItemSearchTest() throws InterruptedException {
+    public void recommendedItemSearchTest() {
         MainPage mainPage = new MainPage();
         SearchPage searchPage = new SearchPage();
         open("/");
@@ -21,7 +21,7 @@ public class SearchTest extends BaseTest {
     }
 
     @Test(description = "Тест на коректний пошук довільного товара")
-    public void successfulSearchTest() throws InterruptedException {
+    public void successfulSearchTest() {
         MainPage mainPage = new MainPage();
         SearchPage searchPage = new SearchPage();
         open("/");

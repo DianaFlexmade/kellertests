@@ -11,7 +11,6 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage extends BasePage {
 
-    private final SelenideElement registerLink = $( ".test-register-popup-button");
     private final SelenideElement emailField = $("input[type='email']");
     private final SelenideElement loginField = $("#js_login_email");
     private final SelenideElement passwordField = $("input[name='password']");
@@ -63,6 +62,7 @@ public class LoginPage extends BasePage {
 
     public SelenideElement checkMyAccount() {
         myAccount.hover();
+        myAccountText.shouldBe(Condition.visible);
         return myAccountText;
     }
 

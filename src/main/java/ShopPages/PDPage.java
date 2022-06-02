@@ -9,9 +9,25 @@ public class PDPage extends BasePage{
     private final SelenideElement miniBasketQuantity = $("#js_product_quantity");
     private SelenideElement pdpWishlistIcon = $("div .wishlist-heart--animated");
     private SelenideElement wishListButton = $(".js-miniwishlist");
+    private SelenideElement sizeButton = $("button[data-name='EU 36,5 - US 4,5']");
+
+    private SelenideElement product = $("a[id='FSCNI0FH000']");
     public void addToBasket() {
         actions().moveToElement(addToBasketButton).click(addToBasketButton).perform();
         click(addToBasketButton);
+    }
+
+    public void goToBasket() throws InterruptedException {
+        $("#cartbutton").hover();
+        click($("div .button--green"));
+        Thread.sleep(5000);
+    }
+
+    public void addProduct(){
+        click(product);
+        closeCountryLayer();
+        actions().moveToElement(sizeButton).click(sizeButton).perform();
+        click(sizeButton);
     }
     public SelenideElement checkMiniBasket() {
         return miniBasketQuantity;

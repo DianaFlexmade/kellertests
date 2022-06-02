@@ -2,6 +2,7 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.logging.Log;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.*;
@@ -15,6 +16,7 @@ abstract public class BaseTest {
         Configuration.browserSize = "1600x900";
         Configuration.headless = false;
         Configuration.timeout = 7000;
+
     }
 
     @BeforeMethod
