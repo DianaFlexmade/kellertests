@@ -17,12 +17,6 @@ public class PDPage extends BasePage{
         click(addToBasketButton);
     }
 
-    public void goToBasket() throws InterruptedException {
-        $("#cartbutton").hover();
-        click($("div .button--green"));
-        Thread.sleep(5000);
-    }
-
     public void addProduct(){
         click(product);
         closeCountryLayer();
