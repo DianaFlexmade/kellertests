@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class BuyProductTest extends BaseTest{
 
     WebDriver driver;
-    @Test(description = "Тест на додання товара до кошика")
+    @Test(description = "Тест на покупку підписки Premium")
     public void addToBasketTest() {
         PDPage pdPage = new PDPage();
         open("/p/patagonia-arbor-roll-top-backpack-OEQPG03X000.html");
@@ -20,7 +20,7 @@ public class BuyProductTest extends BaseTest{
     }
 
     //TODO
-    @Test(description = "Тест на успішну покупку товара")
+    @Test(description = "Тест на успішну покупку товара авторизованим користувачем")
     public void purchaseProductTest() throws InterruptedException {
         open("/");
         LoginPage authPage = new LoginPage();

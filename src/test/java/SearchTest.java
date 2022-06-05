@@ -17,7 +17,7 @@ public class SearchTest extends BaseTest {
         mainPage.acceptCookie();
         mainPage.clickOnSearchIcon();
         searchPage.selectRecommendedProduct();
-        Assert.assertEquals(searchPage.getSearchResultText().text(), TestValues.RECOMMENDED_RESULT);
+        Assert.assertTrue(searchPage.getSearchResultText().text().contains("SEARCH RESULTS FOR \"NIKE METCON\""));
     }
 
     @Test(description = "Тест на коректний пошук довільного товара")
@@ -27,8 +27,8 @@ public class SearchTest extends BaseTest {
         open("/");
         searchPage.acceptCookie();
         mainPage.clickOnSearchIcon();
-        mainPage.search("Adidas Terrex");
-        Assert.assertEquals(searchPage.getSearchResultText().text(), TestValues.SEARCH_RESULT);
+        mainPage.search("Adidas");
+        Assert.assertTrue(searchPage.getSearchResultText().text().contains("SEARCH RESULTS FOR \"ADIDAS\""));
     }
 
 }
