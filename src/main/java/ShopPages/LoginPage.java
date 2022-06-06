@@ -14,7 +14,7 @@ public class LoginPage extends BasePage {
     private final SelenideElement emailField = $("input[type='email']");
     private final SelenideElement loginField = $("#js_login_email");
     private final SelenideElement passwordField = $("input[name='password']");
-    private final SelenideElement repeatPasswordField = $("input[name='password_confirmation']");
+    private final SelenideElement repeatPasswordField = $("input[name=\"password_confirmation\"]");
     private final SelenideElement termsCheckbox = $("label[for='terms-agree']");
     private final SelenideElement registerButton = $(".test-register-button");
     private final SelenideElement loginButton = $(".test-login-button");

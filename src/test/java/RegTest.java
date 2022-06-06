@@ -17,7 +17,7 @@ public class RegTest extends BaseTest {
         open("/");
         LoginPage authPage = new LoginPage();
         authPage.registerUser(email, "TestPassword1!", "TestPassword1!");
-        authPage.getSuccessRegMessage().should(Condition.exist);
+        authPage.getSuccessRegMessage().shouldHave(Condition.exactText("REGISTRATION SUCCESSFUL"));
         Assert.assertEquals(authPage.getSuccessRegMessage().text(), TestValues.SUCCESS_MESSAGE); // REGISTRATION SUCCESSFUL
     }
 
