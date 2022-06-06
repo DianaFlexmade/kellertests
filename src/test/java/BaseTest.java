@@ -13,7 +13,7 @@ abstract public class BaseTest {
     public void setUp() {
         Configuration.driverManagerEnabled = true;
         Configuration.baseUrl = "https://keller:sports17@stage.keller-sports.com";
-        Configuration.browserSize = "1600x900";
+        Configuration.browserSize = "1650x950";
         Configuration.headless = false;
         Configuration.timeout = 7000;
 
