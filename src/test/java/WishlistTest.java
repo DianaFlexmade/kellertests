@@ -1,8 +1,6 @@
-import ShopPages.MainPage;
 import ShopPages.PDPage;
 import ShopPages.WishlistPage;
 import com.codeborne.selenide.Condition;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.*;

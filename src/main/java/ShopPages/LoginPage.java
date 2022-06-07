@@ -3,9 +3,6 @@ package ShopPages;
 import com.codeborne.selenide.ClickOptions;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
-
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -68,11 +65,4 @@ public class LoginPage extends BasePage {
         passwordField.sendKeys(passwordFieldValue);
         loginButton.click();
     }
-
-    public SelenideElement checkMyAccount() {
-        myAccount.hover();
-        myAccountText.shouldBe(Condition.visible);
-        return myAccountText;
-    }
-
 }

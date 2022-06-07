@@ -1,5 +1,4 @@
 import ShopPages.LoginPage;
-import ShopPages.MainPage;
 import com.codeborne.selenide.Condition;
 import com.github.javafaker.Faker;
 import helpers.TestValues;

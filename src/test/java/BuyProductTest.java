@@ -1,9 +1,6 @@
 import ShopPages.*;
 import com.codeborne.selenide.Condition;
 import com.github.javafaker.Faker;
-import helpers.TestValues;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

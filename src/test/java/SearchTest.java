@@ -1,8 +1,6 @@
 import ShopPages.MainPage;
-import ShopPages.PDPage;
 import ShopPages.SearchPage;
 import com.codeborne.selenide.Condition;
-import helpers.TestValues;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

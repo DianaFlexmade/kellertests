@@ -1,11 +1,8 @@
 package ShopPages;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
-
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
 public class MainPage extends BasePage {
     private final SelenideElement searchField = $("#searchParamDesktop");
