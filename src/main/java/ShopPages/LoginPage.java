@@ -45,6 +45,7 @@ public class LoginPage extends BasePage {
     public void registerUser(String emailFieldValue, String passwordFieldValue, String repeatPasswordFieldValue) {
         LoginPage loginPage = new LoginPage();
         loginPage.acceptCookie();
+        loginPage.closeCountryLayer();
         loginPage.openLoginPage();
         click($( ".test-register-popup-button"));
         loginPage.openRegPageText().shouldHave(Condition.exactText("CREATE CUSTOMER ACCOUNT"));

@@ -1,5 +1,6 @@
 package ShopPages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
@@ -36,14 +37,13 @@ public class CheckoutPage extends BasePage {
     private SelenideElement dateOfBirthYear = $(byXpath("//select[@name=\"shipping[bday_year]\"]"));
 
     public void goToPay() {
+        premiumImage.shouldBe(Condition.visible);
+        goToCheckoutButton.shouldBe(Condition.visible);
         click(goToCheckoutButton);
     }
 
-    public SelenideElement checkPremiumProduct() {
-        return premiumImage;
-    }
-
     public void setPersonalData() {
+        genderSelect.shouldBe(Condition.visible);
         click(genderSelect);
         firstName.sendKeys("test");
         secondName.sendKeys("test");
@@ -55,6 +55,7 @@ public class CheckoutPage extends BasePage {
     }
 
     public void setPersonalDataForPremium() {
+        genderSelect.shouldBe(Condition.visible);
         click(genderSelect);
         firstName.sendKeys("test");
         secondName.sendKeys("test");
@@ -69,6 +70,7 @@ public class CheckoutPage extends BasePage {
     }
 
     public void setPaymentData() {
+        iframeForCardNumber.shouldBe(Condition.visible);
         switchTo().frame(iframeForCardNumber);
         cardNumber.sendKeys("4988438843884305");
         switchTo().parentFrame();
@@ -83,13 +85,15 @@ public class CheckoutPage extends BasePage {
         cardCvv.sendKeys("737");
         switchTo().parentFrame();
         click(checkOrder);
+        pay.shouldBe(Condition.visible);
     }
 
     public void pay(){
         click(pay);
     }
 
-    public String getThankYouText() {
-        return thankYou.text();
+    public SelenideElement getThankYouText() {
+        thankYou.shouldBe(Condition.visible);
+        return thankYou;
     }
 }

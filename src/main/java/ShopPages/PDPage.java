@@ -1,5 +1,6 @@
 package ShopPages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byXpath;
@@ -15,9 +16,9 @@ public class PDPage extends BasePage{
 
     private SelenideElement addToBasket = $("#js_add_to_basket");
     public void addProductToBasket() {
-        closeCountryLayer();
         actions().moveToElement(sizeButton).click(sizeButton).perform();
         click(sizeButton);
+        addToBasket.shouldBe(Condition.visible);
         click(addToBasket);
     }
 
@@ -33,8 +34,8 @@ public class PDPage extends BasePage{
     }
 
     public void buyPremium(){
+        premiumLink.shouldBe(Condition.visible);
         click(premiumLink);
-        closeCountryLayer();
         click(addPremiumToBasket);
     }
 }
