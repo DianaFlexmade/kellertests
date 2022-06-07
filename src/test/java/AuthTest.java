@@ -13,8 +13,8 @@ public class AuthTest extends BaseTest{
         open("/");
         LoginPage authPage = new LoginPage();
         authPage.authorizeUser(TestValues.USER_EMAIL, TestValues.USER_PASS);
-        authPage.checkMyAccount();
-        Assert.assertEquals(authPage.checkMyAccount().text(), TestValues.MY_ACCOUNT_TEXT);
+        authPage.getLoggedIn().shouldBe(Condition.visible);
+        Assert.assertTrue(authPage.getLoggedIn().exists());
     }
 
     @Test(description = "Тест на неуспішну авторизацію із неправильним паролем")
