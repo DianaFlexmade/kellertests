@@ -8,6 +8,7 @@ import static com.codeborne.selenide.Selenide.switchTo;
 public class CheckoutPage extends BasePage {
 
     private SelenideElement goToCheckoutButton = $(".test-goto-shipping-button");
+    private SelenideElement premiumImage = $(".product-list__product-image");
     private SelenideElement continueToPayment = $(".test-shipping-submit-button");
     private SelenideElement iframeForCardNumber = $(byXpath("(//iframe[@frameborder=\"0\"])[1]"));
     private SelenideElement iframeForValidUntilMonth = $(byXpath("(//iframe[@frameborder=\"0\"])[2]"));
@@ -36,6 +37,10 @@ public class CheckoutPage extends BasePage {
 
     public void goToPay() {
         click(goToCheckoutButton);
+    }
+
+    public SelenideElement checkPremiumProduct() {
+        return premiumImage;
     }
 
     public void setPersonalData() {

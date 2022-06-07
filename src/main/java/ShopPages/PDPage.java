@@ -7,24 +7,18 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.actions;
 
 public class PDPage extends BasePage{
-    private final SelenideElement addToBasketButton = $("#js_add_to_basket");
-
     private SelenideElement addPremiumToBasket = $(byXpath("//button[@class=\"premium-details__button\"]"));
     private SelenideElement premiumLink = $(".test-account-popup-link");
     private SelenideElement pdpWishlistIcon = $("div .wishlist-heart--animated");
     private SelenideElement wishListButton = $(".js-miniwishlist");
     private SelenideElement sizeButton = $("button[data-name='EU 38 - US 5,5']");
-    private SelenideElement product = $("a[id='FSCNI0FH000']");
-    public void addToBasket() {
-        actions().moveToElement(addToBasketButton).click(addToBasketButton).perform();
-        click(addToBasketButton);
-    }
 
-    public void addProduct(){
-        click(product);
+    private SelenideElement addToBasket = $("#js_add_to_basket");
+    public void addProductToBasket() {
         closeCountryLayer();
         actions().moveToElement(sizeButton).click(sizeButton).perform();
         click(sizeButton);
+        click(addToBasket);
     }
 
     public void addToWishlist() {

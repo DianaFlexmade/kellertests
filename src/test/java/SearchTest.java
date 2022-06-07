@@ -1,4 +1,5 @@
 import ShopPages.MainPage;
+import ShopPages.PDPage;
 import ShopPages.SearchPage;
 import com.codeborne.selenide.Condition;
 import helpers.TestValues;
@@ -13,6 +14,7 @@ public class SearchTest extends BaseTest {
     public void recommendedItemSearchTest() {
         MainPage mainPage = new MainPage();
         SearchPage searchPage = new SearchPage();
+        PDPage pdPage = new PDPage();
         open("/");
         mainPage.acceptCookie();
         mainPage.clickOnSearchIcon();
