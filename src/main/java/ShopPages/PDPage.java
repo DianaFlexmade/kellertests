@@ -33,9 +33,10 @@ public class PDPage extends BasePage{
         return wishlistPage;
     }
 
-    public void buyPremium(){
+    public void buyPremium() throws InterruptedException {
         premiumLink.shouldBe(Condition.visible);
         click(premiumLink);
         click(addPremiumToBasket);
+        Thread.sleep(5000);
     }
 }

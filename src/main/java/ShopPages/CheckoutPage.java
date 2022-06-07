@@ -8,8 +8,13 @@ import static com.codeborne.selenide.Selenide.switchTo;
 
 public class CheckoutPage extends BasePage {
 
+
+    private final SelenideElement loginCheckout = $(".test-login-email");
+    private final SelenideElement passCheckout = $(".test-login-password");
+    private final SelenideElement signUpCheckout = $(".test-login-button");
+
     private SelenideElement goToCheckoutButton = $(".test-goto-shipping-button");
-    private SelenideElement premiumImage = $(".product-list__product-image");
+
     private SelenideElement continueToPayment = $(".test-shipping-submit-button");
     private SelenideElement iframeForCardNumber = $(byXpath("(//iframe[@frameborder=\"0\"])[1]"));
     private SelenideElement iframeForValidUntilMonth = $(byXpath("(//iframe[@frameborder=\"0\"])[2]"));
@@ -31,15 +36,15 @@ public class CheckoutPage extends BasePage {
     private SelenideElement streetNo = $(byXpath("//input[@name=\"shipping[street_no]\"]"));
     private SelenideElement postCode = $(byXpath("//input[@name=\"shipping[postal]\"]"));
     private SelenideElement city = $(byXpath("//input[@name=\"shipping[city]\"]"));
-
+    private SelenideElement premiumImage = $(".product-list__product-image");
     private SelenideElement dateOfBirthDay = $(byXpath("//select[@name=\"shipping[bday_day]\"]"));
     private SelenideElement dateOfBirthMonth = $(byXpath("//select[@name=\"shipping[bday_month]\"]"));
     private SelenideElement dateOfBirthYear = $(byXpath("//select[@name=\"shipping[bday_year]\"]"));
 
-    public void goToPay() {
-        premiumImage.shouldBe(Condition.visible);
+    public void goToPay() throws InterruptedException {
         goToCheckoutButton.shouldBe(Condition.visible);
         click(goToCheckoutButton);
+        Thread.sleep(6000);
     }
 
     public void setPersonalData() {
@@ -51,6 +56,11 @@ public class CheckoutPage extends BasePage {
         streetNo.sendKeys("1");
         postCode.sendKeys("12345");
         city.sendKeys("test");
+        click(continueToPayment);
+    }
+
+    public void goToPayment() {
+        continueToPayment.shouldBe(Condition.visible);
         click(continueToPayment);
     }
 
@@ -67,6 +77,9 @@ public class CheckoutPage extends BasePage {
         postCode.sendKeys("12345");
         city.sendKeys("test");
         click(continueToPayment);
+    }
+    public void setPayment(){
+        click($(".test-choose-payone-label"));
     }
 
     public void setPaymentData() {
@@ -88,12 +101,23 @@ public class CheckoutPage extends BasePage {
         pay.shouldBe(Condition.visible);
     }
 
-    public void pay(){
+    public void pay() throws InterruptedException {
+        pay.shouldBe(Condition.exist);
         click(pay);
+        Thread.sleep(6000);
     }
 
     public SelenideElement getThankYouText() {
-        thankYou.shouldBe(Condition.visible);
         return thankYou;
+    }
+
+    public SelenideElement checkAddedPremium() {
+        return premiumImage;
+    }
+
+    public void checkoutLogin(String checkoutLogin, String checkoutPass) {
+        loginCheckout.sendKeys(checkoutLogin);
+        passCheckout.sendKeys(checkoutPass);
+        click(signUpCheckout);
     }
 }

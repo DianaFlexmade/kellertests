@@ -18,14 +18,12 @@ public class LoginPage extends BasePage {
     private final SelenideElement successRegText = $(byXpath("//h4[@class=\"layer-title\"]"));
     private final SelenideElement weakPassMessage = $(byXpath("(//*[@class = 'input-box__note input-box__note--error']) [2]"));
     private final SelenideElement wrongPassMessage = $("div> .input-box__note--error");
-    private final SelenideElement myAccount = $(".test-logged-link");
-    private final SelenideElement myAccountText = $("span .account__logout-link");
-
     private final SelenideElement loggedIn = $(byXpath("//div[@class=\"header-top-right__dropdown-hold header-top-right__dropdown-hold--user show-desktop\"]"));
 
     public SelenideElement openRegPageText() {
         return successRegText;
     }
+
 
     public SelenideElement getLoggedIn(){
         return loggedIn;
@@ -60,6 +58,7 @@ public class LoginPage extends BasePage {
     public void authorizeUser(String emailFieldValue, String passwordFieldValue) {
         MainPage mainPage = new MainPage();
         mainPage.acceptCookie();
+        mainPage.closeCountryLayer();
         mainPage.openLoginPage();
         click(loginField);
         loginField.sendKeys(emailFieldValue);
