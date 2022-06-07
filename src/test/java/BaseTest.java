@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 abstract public class BaseTest {
 
     Logger logger = LoggerFactory.getLogger(BaseTest.class);
-    public void setUp() {
+    public void setup() {
         Configuration.driverManagerEnabled = true;
         Configuration.baseUrl = "https://keller:sports17@stage.keller-sports.com";
         Configuration.browserSize = "1650x950";
@@ -21,8 +21,8 @@ abstract public class BaseTest {
     @BeforeMethod
     @Parameters("browser")
 
-    public void setup(@Optional("chrome") String browser) throws Exception{
-            setUp();
+    public void setUp(@Optional("chrome") String browser) throws Exception{
+            setup();
 
         if(browser.equalsIgnoreCase("firefox")){
             WebDriverManager.firefoxdriver().setup();

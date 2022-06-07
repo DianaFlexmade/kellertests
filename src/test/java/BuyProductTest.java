@@ -12,26 +12,9 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class BuyProductTest extends BaseTest{
     Faker faker = new Faker();
-    private final String email = faker.internet().emailAddress();
+//    private final String emailForPremium = faker.internet().emailAddress();
+//    private final String emailForProduct = faker.internet().emailAddress();
 
-    @Test(description = "Тест на покупку підписки Premium")
-    public void buyPremiumTest() {
-        open("/");
-        LoginPage authPage = new LoginPage();
-        PDPage pdPage = new PDPage();
-        CheckoutPage checkoutPage = new CheckoutPage();
-        authPage.registerUser(email, "19111994qQ!", "19111994qQ!");
-        authPage.click($(".btn-login"));
-        pdPage.buyPremium();
-        open("https://keller:sports17@checkout-stage.keller-sports.com/");
-        checkoutPage.goToPay();
-        checkoutPage.setPersonalDataForPremium();
-        checkoutPage.setPaymentData();
-        checkoutPage.pay();
-        Assert.assertEquals(checkoutPage.getThankYouText(), "DONE!");
-    }
-
-    //TODO
     @Test(description = "Тест на успішну покупку товара авторизованим користувачем")
     public void purchaseProductTest() {
         open("/");
@@ -40,7 +23,7 @@ public class BuyProductTest extends BaseTest{
         SearchPage searchPage = new SearchPage();
         PDPage pdPage = new PDPage();
         CheckoutPage checkoutPage = new CheckoutPage();
-        authPage.registerUser(email, "19111994qQ!", "19111994qQ!");
+        authPage.registerUser(faker.internet().emailAddress(), "19111994qQ!", "19111994qQ!");
         authPage.click($(".btn-login"));
         mainPage.clickOnSearchIcon();
         searchPage.selectRecommendedProduct();
@@ -49,6 +32,23 @@ public class BuyProductTest extends BaseTest{
         open("https://keller:sports17@checkout-stage.keller-sports.com/");
         checkoutPage.goToPay();
         checkoutPage.setPersonalData();
+        checkoutPage.setPaymentData();
+        checkoutPage.pay();
+        Assert.assertEquals(checkoutPage.getThankYouText(), "DONE!");
+    }
+
+    @Test(description = "Тест на покупку підписки Premium")
+    public void buyPremiumTest() {
+        open("/");
+        LoginPage authPage = new LoginPage();
+        PDPage pdPage = new PDPage();
+        CheckoutPage checkoutPage = new CheckoutPage();
+        authPage.registerUser(faker.internet().emailAddress(), "19111994qQ!", "19111994qQ!");
+        authPage.click($(".btn-login"));
+        pdPage.buyPremium();
+        open("https://keller:sports17@checkout-stage.keller-sports.com/");
+        checkoutPage.goToPay();
+        checkoutPage.setPersonalDataForPremium();
         checkoutPage.setPaymentData();
         checkoutPage.pay();
         Assert.assertEquals(checkoutPage.getThankYouText(), "DONE!");

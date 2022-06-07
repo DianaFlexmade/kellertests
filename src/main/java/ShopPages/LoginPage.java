@@ -24,7 +24,9 @@ public class LoginPage extends BasePage {
     private final SelenideElement myAccount = $(".test-logged-link");
     private final SelenideElement myAccountText = $("span .account__logout-link");
 
-
+    public SelenideElement openRegPageText() {
+        return successRegText;
+    }
     public SelenideElement getSuccessRegMessage() {
         return successRegText;
     }
@@ -42,6 +44,7 @@ public class LoginPage extends BasePage {
         loginPage.acceptCookie();
         loginPage.openLoginPage();
         click($( ".test-register-popup-button"));
+        loginPage.openRegPageText().shouldHave(Condition.exactText("CREATE CUSTOMER ACCOUNT"));
         click(emailField);
         emailField.sendKeys(emailFieldValue);
         passwordField.sendKeys(passwordFieldValue);
