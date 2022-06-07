@@ -23,8 +23,6 @@ public class LoginPage extends BasePage {
     public SelenideElement openRegPageText() {
         return successRegText;
     }
-
-
     public SelenideElement getLoggedIn(){
         return loggedIn;
     }

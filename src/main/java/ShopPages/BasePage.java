@@ -1,10 +1,15 @@
 package ShopPages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static com.codeborne.selenide.Selenide.$;
 
 public class BasePage {
+
+    Logger logger = LoggerFactory.getLogger(BasePage.class);
     public void click(SelenideElement element){
         element.click();
     }
@@ -17,6 +22,10 @@ public class BasePage {
     }
 
     public void closeCountryLayer() {
-        $("#js_country-layer-close-icon").click();
+        if ($("#js_country-layer-close-icon").is(Condition.visible)) {
+            $("#js_country-layer-close-icon").click();
+        } else {
+            logger.info("Country Layer is missing");
+        }
     }
 }
