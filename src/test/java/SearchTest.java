@@ -15,6 +15,7 @@ public class SearchTest extends BaseTest {
         open("/");
         mainPage.acceptCookie();
         mainPage.clickOnSearchIcon();
+        searchPage.getSearchResult().shouldBe(Condition.exist);
         searchPage.selectRecommendedProduct();
         searchPage.getSearchResult().shouldBe(Condition.visible);
         Assert.assertTrue(searchPage.getSearchResult().text().contains("SEARCH RESULTS FOR \"NIKE METCON\""));
