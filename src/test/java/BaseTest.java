@@ -14,7 +14,6 @@ abstract public class BaseTest {
         Configuration.driverManagerEnabled = true;
         Configuration.baseUrl = "https://keller:sports17@stage.keller-sports.com";
         Configuration.browserSize = "1650x950";
-        Configuration.headless = true;
         Configuration.timeout = 7000;
 
     }
