@@ -23,6 +23,7 @@ public class BuyProductTest extends BaseTest{
         pdPage.addProductToBasket();
         Thread.sleep(5000);
         open("https://keller:sports17@checkout-stage.keller-sports.com/");
+        Thread.sleep(5000);
         checkoutPage.goToPay();
         Thread.sleep(5000);
         checkoutPage.setPersonalData();
