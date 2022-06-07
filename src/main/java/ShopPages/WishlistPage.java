@@ -7,11 +7,13 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class WishlistPage extends BasePage {
 
+    private SelenideElement removeElement = $("button > .product-block__remove-image");
+
     public void checkWishlistAmount() {
         $(".wishlist__amount").shouldHave(Condition.text("1"));
     }
     public void removeItemFromWishlist() {
-        $("button > .product-block__remove-image").click();
+        click(removeElement);
     }
 
     public SelenideElement removeText() {

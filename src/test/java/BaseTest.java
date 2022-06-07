@@ -21,7 +21,7 @@ abstract public class BaseTest {
     @BeforeMethod
     @Parameters("browser")
 
-    public void setUp(@Optional("firefox") String browser) throws Exception{
+    public void setUp(@Optional("chrome") String browser) throws Exception{
             setup();
 
         if(browser.equalsIgnoreCase("firefox")){

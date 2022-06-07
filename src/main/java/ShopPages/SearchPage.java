@@ -9,7 +9,7 @@ public class SearchPage extends BasePage {
     private SelenideElement searchResult = $("div > .search__headline");
     private SelenideElement recommendedProduct = $(byXpath("(//a[@class='keywords__list-link']) [2]"));
 
-    public SelenideElement getSearchResultText(){
+    public SelenideElement getSearchResult(){
         return searchResult;
     }
 

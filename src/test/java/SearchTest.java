@@ -14,12 +14,12 @@ public class SearchTest extends BaseTest {
     public void recommendedItemSearchTest() {
         MainPage mainPage = new MainPage();
         SearchPage searchPage = new SearchPage();
-        PDPage pdPage = new PDPage();
         open("/");
         mainPage.acceptCookie();
         mainPage.clickOnSearchIcon();
         searchPage.selectRecommendedProduct();
-        Assert.assertTrue(searchPage.getSearchResultText().text().contains("SEARCH RESULTS FOR \"NIKE METCON\""));
+        searchPage.getSearchResult().shouldBe(Condition.visible);
+        Assert.assertTrue(searchPage.getSearchResult().text().contains("SEARCH RESULTS FOR \"NIKE METCON\""));
     }
 
     @Test(description = "Тест на коректний пошук довільного товара")
@@ -30,7 +30,7 @@ public class SearchTest extends BaseTest {
         searchPage.acceptCookie();
         mainPage.clickOnSearchIcon();
         mainPage.search("Adidas");
-        Assert.assertTrue(searchPage.getSearchResultText().text().contains("SEARCH RESULTS FOR \"ADIDAS\""));
+        Assert.assertTrue(searchPage.getSearchResult().text().contains("SEARCH RESULTS FOR \"ADIDAS\""));
     }
 
 }
