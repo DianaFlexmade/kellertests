@@ -8,7 +8,6 @@ import static com.codeborne.selenide.Selenide.switchTo;
 
 public class CheckoutPage extends BasePage {
 
-
     private final SelenideElement loginCheckout = $(".test-login-email");
     private final SelenideElement passCheckout = $(".test-login-password");
     private final SelenideElement signUpCheckout = $(".test-login-button");

@@ -12,6 +12,7 @@ public class WishlistPage extends BasePage {
         $(".wishlist__amount").shouldHave(Condition.text("1"));
     }
     public void removeItemFromWishlist() {
+        removeElement.should(Condition.exist);
         click(removeElement);
     }
 
