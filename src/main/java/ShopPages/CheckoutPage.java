@@ -28,7 +28,6 @@ public class CheckoutPage extends BasePage {
     private SelenideElement pay = $(".test-pay-now-button");
     private SelenideElement thankYou = $(".thankyou-header__title");
     private SelenideElement genderSelect = $(byXpath("//label[@for=\"shipping-gender-female\"]"));
-
     private SelenideElement firstName = $(byXpath("//input[@name=\"shipping[first_name]\"]"));
     private SelenideElement secondName = $(byXpath("//input[@name=\"shipping[last_name]\"]"));
     private SelenideElement street = $(byXpath("//input[@name=\"shipping[street]\"]"));

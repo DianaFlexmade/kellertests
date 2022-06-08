@@ -1,13 +1,14 @@
 import ShopPages.PDPage;
 import ShopPages.WishlistPage;
 import com.codeborne.selenide.Condition;
+import helpers.RetryAnalyzer;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.*;
 
 public class WishlistTest extends BaseTest {
 
-    @Test(description = "Тест на додання товара до вішліста")
+    @Test(description = "Тест на додання товара до вішліста", retryAnalyzer = RetryAnalyzer.class)
     public void addToWishlistTest() throws InterruptedException {
         PDPage pdPage = new PDPage();
         WishlistPage wishlistPage = new WishlistPage();
@@ -18,7 +19,7 @@ public class WishlistTest extends BaseTest {
         wishlistPage.checkWishlistAmount();
     }
 
-    @Test(description = "Тест на видалення товара з вішліста")
+    @Test(description = "Тест на видалення товара з вішліста", retryAnalyzer = RetryAnalyzer.class)
     public void removeFromWishlistTest() {
         PDPage pdPage = new PDPage();
         WishlistPage wishlistPage = new WishlistPage();

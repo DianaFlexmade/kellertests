@@ -1,29 +1,27 @@
 import ShopPages.MainPage;
 import ShopPages.SearchPage;
-import com.codeborne.selenide.Condition;
+import helpers.RetryAnalyzer;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static com.codeborne.selenide.Selenide.open;
-
 public class SearchTest extends BaseTest {
 
-    @Test(description = "Тест на коректний пошук рекомендованого товара")
+    @Test(description = "Тест на коректний пошук рекомендованого товара", retryAnalyzer = RetryAnalyzer.class)
     public void recommendedItemSearchTest() {
         MainPage mainPage = new MainPage();
         SearchPage searchPage = new SearchPage();
-        open("/");
+        openMainPage();
         mainPage.acceptCookie();
         mainPage.clickOnSearchIcon();
         searchPage.selectRecommendedProduct();
         Assert.assertTrue(searchPage.getSearchResult().text().contains("SEARCH RESULTS FOR \"NIKE METCON\""));
     }
 
-    @Test(description = "Тест на коректний пошук довільного товара")
+    @Test(description = "Тест на коректний пошук довільного товара", retryAnalyzer = RetryAnalyzer.class)
     public void successfulSearchTest() {
         MainPage mainPage = new MainPage();
         SearchPage searchPage = new SearchPage();
-        open("/");
+        openMainPage();
         searchPage.acceptCookie();
         mainPage.clickOnSearchIcon();
         mainPage.search("Adidas");

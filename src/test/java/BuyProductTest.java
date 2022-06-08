@@ -1,8 +1,8 @@
-import ShopPages.*;
-import com.codeborne.selenide.Condition;
+import ShopPages.CheckoutPage;
+import ShopPages.LoginPage;
+import ShopPages.PDPage;
 import com.github.javafaker.Faker;
-import helpers.TestValues;
-import org.testng.Assert;
+import helpers.RetryAnalyzer;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -11,16 +11,16 @@ import static com.codeborne.selenide.Selenide.open;
 public class BuyProductTest extends BaseTest{
     Faker faker = new Faker();
 
-    @Test(description = "Тест на покупку підписки Premium")
+    @Test(description = "Тест на покупку підписки Premium", retryAnalyzer = RetryAnalyzer.class)
     public void buyPremiumTest() throws InterruptedException {
-        open("/");
+        openMainPage();
         LoginPage authPage = new LoginPage();
         PDPage pdPage = new PDPage();
         CheckoutPage checkoutPage = new CheckoutPage();
         authPage.registerUser(faker.internet().emailAddress(), "19111994qQ!", "19111994qQ!");
         authPage.click($(".btn-login"));
         pdPage.buyPremium();
-//        open("https://keller:sports17@checkout-stage.keller-sports.com/");
+        openCheckoutPage();
 //        checkoutPage.checkAddedPremium();
 //        Thread.sleep(7000);
 //        checkoutPage.goToPay();
@@ -32,7 +32,7 @@ public class BuyProductTest extends BaseTest{
 
     @Test(description = "Тест на успішну покупку товара авторизованим користувачем")
     public void purchaseProductTest() throws InterruptedException {
-        open("/");
+        openMainPage();
         LoginPage authPage = new LoginPage();
         authPage.acceptCookie();
         PDPage pdPage = new PDPage();
@@ -40,7 +40,7 @@ public class BuyProductTest extends BaseTest{
         open("/p/nike-metcon-7-training-shoe-FSCNI0FH000.html");
         authPage.closeCountryLayer();
 //        pdPage.addProductToBasket();
-//        open("https://keller:sports17@checkout-stage.keller-sports.com/");
+        openCheckoutPage();
 //        checkoutPage.goToPay();
 //        checkoutPage.checkoutLogin(TestValues.USER_EMAIL, TestValues.USER_PASS);
 //        checkoutPage.goToPay();

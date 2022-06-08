@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import static com.codeborne.selenide.Selenide.$;
 
 public class BasePage {
-
     Logger logger = LoggerFactory.getLogger(BasePage.class);
     public void click(SelenideElement element){
         element.click();
@@ -22,7 +21,7 @@ public class BasePage {
     }
 
     public void closeCountryLayer() {
-        if ($("#js_country-layer-close-icon").is(Condition.visible)) {
+        if ($("#js_country-layer-close-icon").exists()) {
             $("#js_country-layer-close-icon").click();
         } else {
             logger.info("Country Layer is missing");
