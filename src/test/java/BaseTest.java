@@ -48,7 +48,7 @@ abstract public class BaseTest {
         open(Urls.CHECKOUT_PAGE.getUrl());
     }
     public void openProductPage() {
-        open(Urls.CHECKOUT_PAGE.getUrl());
+        open(Urls.PRODUCT_PAGE.getUrl());
     }
 
     @AfterMethod
