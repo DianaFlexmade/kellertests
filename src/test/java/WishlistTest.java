@@ -4,16 +4,13 @@ import com.codeborne.selenide.Condition;
 import helpers.RetryAnalyzer;
 import org.testng.annotations.Test;
 
-import static com.codeborne.selenide.Selenide.*;
-
 public class WishlistTest extends BaseTest {
 
     @Test(description = "Тест на додання товара до вішліста", retryAnalyzer = RetryAnalyzer.class)
     public void addToWishlistTest() {
         PDPage pdPage = new PDPage();
         WishlistPage wishlistPage = new WishlistPage();
-        openMainPage();
-        open("/p/nike-fury-3.0-headband-REQNI00O000.html");
+        openProductPage();
         pdPage.acceptCookie();
         pdPage.addToWishlist();
         pdPage.goToWishlist();
@@ -24,8 +21,7 @@ public class WishlistTest extends BaseTest {
     public void removeFromWishlistTest() {
         PDPage pdPage = new PDPage();
         WishlistPage wishlistPage = new WishlistPage();
-        openMainPage();
-        open("/p/nike-fury-3.0-headband-REQNI00O000.html");
+        openProductPage();
         pdPage.acceptCookie();
         pdPage.addToWishlist();
         pdPage.goToWishlist();

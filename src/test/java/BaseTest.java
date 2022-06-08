@@ -4,7 +4,10 @@ import helpers.Urls;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 import static com.codeborne.selenide.Selenide.open;
 
@@ -42,6 +45,9 @@ abstract public class BaseTest {
         open(Urls.KELLER_MAIN_PAGE.getUrl());
     }
     public void openCheckoutPage() {
+        open(Urls.CHECKOUT_PAGE.getUrl());
+    }
+    public void openProductPage() {
         open(Urls.CHECKOUT_PAGE.getUrl());
     }
 
