@@ -1,12 +1,14 @@
 import ShopPages.MainPage;
 import ShopPages.SearchPage;
 import helpers.RetryAnalyzer;
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class SearchTest extends BaseTest {
 
-    @Test(description = "Тест на коректний пошук рекомендованого товара", retryAnalyzer = RetryAnalyzer.class)
+    @Description("Тест на коректний пошук рекомендованого товара")
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void recommendedItemSearchTest() {
         MainPage mainPage = new MainPage();
         SearchPage searchPage = new SearchPage();
@@ -17,7 +19,8 @@ public class SearchTest extends BaseTest {
         Assert.assertTrue(searchPage.getSearchResult().text().contains("SEARCH RESULTS FOR \"NIKE METCON\""));
     }
 
-    @Test(description = "Тест на коректний пошук довільного товара", retryAnalyzer = RetryAnalyzer.class)
+    @Description("Тест на коректний пошук довільного товара")
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void successfulSearchTest() {
         MainPage mainPage = new MainPage();
         SearchPage searchPage = new SearchPage();

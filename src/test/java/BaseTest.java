@@ -23,7 +23,7 @@ abstract public class BaseTest {
     @BeforeMethod
     @Parameters("browser")
 
-    public void setUp(@Optional("chrome") String browser) throws Exception{
+    public void setUp(@Optional("firefox") String browser) throws Exception{
             setup();
 
         if(browser.equalsIgnoreCase("firefox")){
@@ -49,6 +49,9 @@ abstract public class BaseTest {
     }
     public void openProductPage() {
         open(Urls.PRODUCT_PAGE.getUrl());
+    }
+    public void openPremiumPage() {
+        open(Urls.PREMIUM_PAGE.getUrl());
     }
 
     @AfterMethod

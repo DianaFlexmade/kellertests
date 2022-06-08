@@ -1,60 +1,60 @@
 package ShopPages;
 
+import com.codeborne.selenide.ClickOptions;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.switchTo;
+import static com.codeborne.selenide.Selenide.*;
 
 public class CheckoutPage extends BasePage {
-
     private final SelenideElement loginCheckout = $(".test-login-email");
     private final SelenideElement passCheckout = $(".test-login-password");
     private final SelenideElement signUpCheckout = $(".test-login-button");
+    private final SelenideElement goToCheckoutButton = $(".test-goto-shipping-button");
+    private final SelenideElement continueToPayment = $(".test-shipping-submit-button");
+    private final SelenideElement iframeForCardNumber = $(byXpath("(//iframe[@frameborder=\"0\"])[1]"));
+    private final SelenideElement iframeForValidUntilMonth = $(byXpath("(//iframe[@frameborder=\"0\"])[2]"));
+    private final SelenideElement iframeForValidUntilYear = $(byXpath("(//iframe[@frameborder=\"0\"])[3]"));
+    private final SelenideElement iframeForCvv = $(byXpath("(//iframe[@frameborder=\"0\"])[4]"));
+    private final SelenideElement cardNumber = $("#cardpan");
+    private final SelenideElement cardHolder = $("input[name='payment[payone][card_holder]']");
+    private final SelenideElement cardExpireMonth = $("#cardexpiremonth");
+    private final SelenideElement cardExpireYear = $("#cardexpireyear");
+    private final SelenideElement cardCvv = $("#cardcvc2");
+    private final SelenideElement checkOrder = $(".test-payment-submit");
+    private final SelenideElement pay = $(".test-pay-now-button");
+    private final SelenideElement thankYou = $(".thankyou-header__title");
+    private final SelenideElement genderSelect = $(byXpath("//label[@for=\"shipping-gender-female\"]"));
+    private final SelenideElement firstName = $(byXpath("//input[@name=\"shipping[first_name]\"]"));
+    private final SelenideElement secondName = $(byXpath("//input[@name=\"shipping[last_name]\"]"));
+    private final SelenideElement street = $(byXpath("//input[@name=\"shipping[street]\"]"));
+    private final SelenideElement streetNo = $(byXpath("//input[@name=\"shipping[street_no]\"]"));
+    private final SelenideElement postCode = $(byXpath("//input[@name=\"shipping[postal]\"]"));
+    private final SelenideElement city = $(byXpath("//input[@name=\"shipping[city]\"]"));
+    private final SelenideElement premiumImage = $(".product-list__product-image");
+    private final SelenideElement dateOfBirthDay = $(byXpath("//select[@name=\"shipping[bday_day]\"]"));
+    private final SelenideElement dateOfBirthMonth = $(byXpath("//select[@name=\"shipping[bday_month]\"]"));
+    private final SelenideElement dateOfBirthYear = $(byXpath("//select[@name=\"shipping[bday_year]\"]"));
+    private final SelenideElement registerCheckoutButton = $(".test-show-register");
+    private final SelenideElement registerCheckoutFirstname = $(".test-register-firstname");
+    private final SelenideElement registerCheckoutLastname = $(".test-register-lastname");
+    private final SelenideElement registerCheckoutEmail = $(".test-register-email");
+    private final SelenideElement registerCheckoutPass = $(".test-register-password");
+    private final SelenideElement registerCheckoutTerms = $(".test-register-terms-label");
+    private final SelenideElement registerCheckout = $(".test-register-button");
 
-    private SelenideElement goToCheckoutButton = $(".test-goto-shipping-button");
-
-    private SelenideElement continueToPayment = $(".test-shipping-submit-button");
-    private SelenideElement iframeForCardNumber = $(byXpath("(//iframe[@frameborder=\"0\"])[1]"));
-    private SelenideElement iframeForValidUntilMonth = $(byXpath("(//iframe[@frameborder=\"0\"])[2]"));
-    private SelenideElement iframeForValidUntilYear = $(byXpath("(//iframe[@frameborder=\"0\"])[3]"));
-    private SelenideElement iframeForCvv = $(byXpath("(//iframe[@frameborder=\"0\"])[4]"));
-    private SelenideElement cardNumber = $("#cardpan");
-    private SelenideElement cardHolder = $("input[name='payment[payone][card_holder]']");
-    private SelenideElement cardExpireMonth = $("#cardexpiremonth");
-    private SelenideElement cardExpireYear = $("#cardexpireyear");
-    private SelenideElement cardCvv = $("#cardcvc2");
-    private SelenideElement checkOrder = $(".test-payment-submit");
-    private SelenideElement pay = $(".test-pay-now-button");
-    private SelenideElement thankYou = $(".thankyou-header__title");
-    private SelenideElement genderSelect = $(byXpath("//label[@for=\"shipping-gender-female\"]"));
-    private SelenideElement firstName = $(byXpath("//input[@name=\"shipping[first_name]\"]"));
-    private SelenideElement secondName = $(byXpath("//input[@name=\"shipping[last_name]\"]"));
-    private SelenideElement street = $(byXpath("//input[@name=\"shipping[street]\"]"));
-    private SelenideElement streetNo = $(byXpath("//input[@name=\"shipping[street_no]\"]"));
-    private SelenideElement postCode = $(byXpath("//input[@name=\"shipping[postal]\"]"));
-    private SelenideElement city = $(byXpath("//input[@name=\"shipping[city]\"]"));
-    private SelenideElement premiumImage = $(".product-list__product-image");
-    private SelenideElement dateOfBirthDay = $(byXpath("//select[@name=\"shipping[bday_day]\"]"));
-    private SelenideElement dateOfBirthMonth = $(byXpath("//select[@name=\"shipping[bday_month]\"]"));
-    private SelenideElement dateOfBirthYear = $(byXpath("//select[@name=\"shipping[bday_year]\"]"));
-
-    public void goToPay() throws InterruptedException {
-        goToCheckoutButton.shouldBe(Condition.visible);
+    public void goToPay() {
         click(goToCheckoutButton);
-        Thread.sleep(6000);
     }
-
-    public void setPersonalData() {
-        genderSelect.shouldBe(Condition.visible);
-        click(genderSelect);
-        firstName.sendKeys("test");
-        secondName.sendKeys("test");
-        street.sendKeys("test");
-        streetNo.sendKeys("1");
-        postCode.sendKeys("12345");
-        city.sendKeys("test");
-        click(continueToPayment);
+    public void checkoutRegister(String firstName, String lastName, String email, String pass) {
+        click(registerCheckoutButton);
+        registerCheckoutFirstname.sendKeys(firstName);
+        registerCheckoutLastname.sendKeys(lastName);
+        registerCheckoutEmail.sendKeys(email);
+        registerCheckoutPass.sendKeys(pass);
+        registerCheckoutTerms.scrollIntoView(true);
+        registerCheckoutTerms.click(ClickOptions.usingDefaultMethod().offset(-150,0));
+        click(registerCheckout);
     }
 
     public void goToPayment() {
@@ -107,10 +107,6 @@ public class CheckoutPage extends BasePage {
 
     public SelenideElement getThankYouText() {
         return thankYou;
-    }
-
-    public SelenideElement checkAddedPremium() {
-        return premiumImage;
     }
 
     public void checkoutLogin(String checkoutLogin, String checkoutPass) {

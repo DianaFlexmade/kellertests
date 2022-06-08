@@ -7,7 +7,6 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage extends BasePage {
-
     private final SelenideElement emailField = $("input[type='email']");
     private final SelenideElement loginField = $("#js_login_email");
     private final SelenideElement passwordField = $("input[name='password']");

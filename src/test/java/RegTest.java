@@ -3,6 +3,7 @@ import com.codeborne.selenide.Condition;
 import com.github.javafaker.Faker;
 import helpers.RetryAnalyzer;
 import helpers.TestValues;
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -10,7 +11,8 @@ public class RegTest extends BaseTest {
     Faker faker = new Faker();
     private final String email = faker.internet().emailAddress();
 
-    @Test(description = "Тест на успішну реєстрацію користувача", retryAnalyzer = RetryAnalyzer.class)
+    @Description("Тест на успішну реєстрацію користувача")
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void successRegTest() {
         openMainPage();
         LoginPage authPage = new LoginPage();
@@ -19,7 +21,8 @@ public class RegTest extends BaseTest {
         Assert.assertEquals(authPage.getSuccessRegMessage().text(), TestValues.SUCCESS_MESSAGE); // REGISTRATION SUCCESSFUL
     }
 
-    @Test(description = "Тест на неуспішну реєстрацію зі слабким паролем", retryAnalyzer = RetryAnalyzer.class)
+    @Description("Тест на неуспішну реєстрацію зі слабким паролем")
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void weakPassTest() {
         openMainPage();
         LoginPage authPage = new LoginPage();

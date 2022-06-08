@@ -8,18 +8,14 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.actions;
 
 public class PDPage extends BasePage{
-    private SelenideElement addPremiumToBasket = $(byXpath("//button[@class=\"premium-details__button\"]"));
-    private SelenideElement premiumLink = $(".test-account-popup-link");
-    private SelenideElement pdpWishlistIcon = $("div .wishlist-heart--animated");
-    private SelenideElement wishListButton = $(".js-miniwishlist");
-    private SelenideElement sizeButton = $("button[data-name='EU 38 - US 5,5']");
-
-    private SelenideElement addToBasket = $("#js_add_to_basket");
+    private final SelenideElement addPremiumToBasket = $(byXpath("//button[@class=\"premium-details__button\"]"));
+    private final SelenideElement pdpWishlistIcon = $("div .wishlist-heart--animated");
+    private final SelenideElement wishListButton = $(".js-miniwishlist");
+    private final SelenideElement addToBasket = $("#js_add_to_basket");
     public void addProductToBasket() {
-        actions().moveToElement(sizeButton).click(sizeButton).perform();
-        click(sizeButton);
         addToBasket.shouldBe(Condition.visible);
         click(addToBasket);
+//        $("js_product_quantity").shouldHave(Condition.text("1"));
     }
 
     public void addToWishlist() {
@@ -27,16 +23,12 @@ public class PDPage extends BasePage{
         click(pdpWishlistIcon);
     }
 
-    public WishlistPage goToWishlist(){
-        WishlistPage wishlistPage = new WishlistPage();
+    public void goToWishlist(){
         click(wishListButton);
-        return wishlistPage;
     }
 
-    public void buyPremium() throws InterruptedException {
-        premiumLink.shouldBe(Condition.visible);
-        click(premiumLink);
+    public void buyPremium() {
         click(addPremiumToBasket);
-        Thread.sleep(5000);
+//        $("js_product_quantity").shouldHave(Condition.text("1"));
     }
 }

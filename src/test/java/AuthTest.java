@@ -2,12 +2,14 @@ import ShopPages.LoginPage;
 import com.codeborne.selenide.Condition;
 import helpers.RetryAnalyzer;
 import helpers.TestValues;
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class AuthTest extends BaseTest{
 
-    @Test(description = "Тест на успішну авторизацію користувача", retryAnalyzer = RetryAnalyzer.class)
+    @Description("Тест на успішну авторизацію користувача")
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void successAuthTest() {
         openMainPage();
         LoginPage authPage = new LoginPage();
@@ -17,7 +19,8 @@ public class AuthTest extends BaseTest{
         logger.info("Passed");
     }
 
-    @Test(description = "Тест на неуспішну авторизацію із неправильним паролем", retryAnalyzer = RetryAnalyzer.class)
+    @Description("Тест на неуспішну авторизацію із неправильним паролем")
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void wrongPassAuthTest() {
         openMainPage();
         LoginPage authPage = new LoginPage();
