@@ -27,8 +27,7 @@ public class BuyProductTest extends BaseTest{
         checkoutPage.setPersonalDataForPremium();
         checkoutPage.setPaymentData();
         checkoutPage.pay();
-        Assert.assertNotEquals(checkoutPage.getThankYouText().text(), "DONE!");
-//        Assert.assertEquals(checkoutPage.getThankYouText().text(), "DONE!");
+        Assert.assertEquals(checkoutPage.getThankYouText().text(), "DONE!");
     }
     @Description("Тест на успішну покупку товара авторизованим користувачем")
     @Test(retryAnalyzer = RetryAnalyzer.class)
@@ -50,7 +49,6 @@ public class BuyProductTest extends BaseTest{
         checkoutPage.setPayment();
         checkoutPage.setPaymentData();
         checkoutPage.pay();
-        Assert.assertNotEquals(checkoutPage.getThankYouText().text(), "DONE!");
-//        Assert.assertEquals(checkoutPage.getThankYouText().text(), "DONE!");
+        Assert.assertEquals(checkoutPage.getThankYouText().text(), "DONE!");
     }
 }

@@ -16,8 +16,7 @@ public class WishlistTest extends BaseTest {
         pdPage.acceptCookie();
         pdPage.addToWishlist();
         pdPage.goToWishlist();
-        wishlistPage.checkWishlistAmount().shouldNotHave(Condition.text("1"));
-//        wishlistPage.checkWishlistAmount().shouldHave(Condition.text("1"));
+        wishlistPage.checkWishlistAmount().shouldHave(Condition.text("1"));
     }
 
     @Description("Тест на видалення товара з вішліста")

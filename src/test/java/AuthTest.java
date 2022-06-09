@@ -15,8 +15,7 @@ public class AuthTest extends BaseTest{
         LoginPage authPage = new LoginPage();
         authPage.authorizeUser(TestValues.USER_EMAIL, TestValues.USER_PASS);
         authPage.getLoggedIn().shouldBe(Condition.visible);
-        Assert.assertFalse(authPage.getLoggedIn().exists());
-//        Assert.assertTrue(authPage.getLoggedIn().exists()); //correct result
+        Assert.assertTrue(authPage.getLoggedIn().exists());
 
     }
 
@@ -27,7 +26,6 @@ public class AuthTest extends BaseTest{
         LoginPage authPage = new LoginPage();
         authPage.authorizeUser(TestValues.USER_EMAIL, "19111993test");
         authPage.getWrongPassMessage().shouldHave(Condition.text(TestValues.FAILED_LOGIN_MESSAGE));
-        Assert.assertNotEquals(authPage.getWrongPassMessage().text(), TestValues.FAILED_LOGIN_MESSAGE);
-//        Assert.assertEquals(authPage.getWrongPassMessage().text(), TestValues.FAILED_LOGIN_MESSAGE);
+        Assert.assertEquals(authPage.getWrongPassMessage().text(), TestValues.FAILED_LOGIN_MESSAGE);
     }
 }
