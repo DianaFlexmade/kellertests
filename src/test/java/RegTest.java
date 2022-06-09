@@ -12,7 +12,7 @@ public class RegTest extends BaseTest {
     private final String email = faker.internet().emailAddress();
 
     @Description("Тест на успішну реєстрацію користувача")
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test
     void successRegTest() throws InterruptedException {
         openMainPage();
         LoginPage authPage = new LoginPage();
@@ -22,12 +22,12 @@ public class RegTest extends BaseTest {
     }
 
     @Description("Тест на неуспішну реєстрацію зі слабким паролем")
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test()
     void weakPassTest() {
-        openMainPage();
-        LoginPage authPage = new LoginPage();
-        authPage.registerUser(email, "testPass", "testPass");
-        authPage.getWeakPassMessage().shouldHave(Condition.text(TestValues.WEAK_PASS_MESSAGE));
+//        openMainPage();
+//        LoginPage authPage = new LoginPage();
+//        authPage.registerUser(email, "testPass", "testPass");
+//        authPage.getWeakPassMessage().shouldHave(Condition.text(TestValues.WEAK_PASS_MESSAGE));
         Assert.fail();
 //        Assert.assertEquals(authPage.getWeakPassMessage().text(), TestValues.WEAK_PASS_MESSAGE);
     }
