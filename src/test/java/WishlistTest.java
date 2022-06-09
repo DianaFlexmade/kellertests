@@ -9,7 +9,7 @@ public class WishlistTest extends BaseTest {
     
     @Description("Тест на додання товара до вішліста")
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void addToWishlistTest() {
+    void addToWishlistTest() {
         PDPage pdPage = new PDPage();
         WishlistPage wishlistPage = new WishlistPage();
         openProductPage();
@@ -21,7 +21,7 @@ public class WishlistTest extends BaseTest {
 
     @Description("Тест на видалення товара з вішліста")
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void removeFromWishlistTest() {
+    void removeFromWishlistTest() {
         PDPage pdPage = new PDPage();
         WishlistPage wishlistPage = new WishlistPage();
         openProductPage();

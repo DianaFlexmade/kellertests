@@ -10,7 +10,7 @@ public class AuthTest extends BaseTest{
 
     @Description("Тест на успішну авторизацію користувача")
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void successAuthTest() {
+    void successAuthTest() {
         openMainPage();
         LoginPage authPage = new LoginPage();
         authPage.authorizeUser(TestValues.USER_EMAIL, TestValues.USER_PASS);
@@ -21,7 +21,7 @@ public class AuthTest extends BaseTest{
 
     @Description("Тест на неуспішну авторизацію із неправильним паролем")
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void wrongPassAuthTest() {
+    void wrongPassAuthTest() {
         openMainPage();
         LoginPage authPage = new LoginPage();
         authPage.authorizeUser(TestValues.USER_EMAIL, "19111993test");

@@ -13,7 +13,7 @@ public class BuyProductTest extends BaseTest{
 
     @Description("Тест на покупку підписки Premium")
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void buyPremiumTest() throws InterruptedException {
+    void buyPremiumTest() throws InterruptedException {
         PDPage pdPage = new PDPage();
         CheckoutPage checkoutPage = new CheckoutPage();
         openPremiumPage();
@@ -31,7 +31,7 @@ public class BuyProductTest extends BaseTest{
     }
     @Description("Тест на успішну покупку товара авторизованим користувачем")
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void purchaseProductTest() throws InterruptedException {
+    void purchaseProductTest() throws InterruptedException {
         LoginPage authPage = new LoginPage();
         PDPage pdPage = new PDPage();
         CheckoutPage checkoutPage = new CheckoutPage();

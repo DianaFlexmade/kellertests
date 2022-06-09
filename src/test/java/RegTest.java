@@ -13,7 +13,7 @@ public class RegTest extends BaseTest {
 
     @Description("Тест на успішну реєстрацію користувача")
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void successRegTest() {
+    void successRegTest() {
         openMainPage();
         LoginPage authPage = new LoginPage();
         authPage.registerUser(email, "TestPassword1!", "TestPassword1!");
@@ -23,7 +23,7 @@ public class RegTest extends BaseTest {
 
     @Description("Тест на неуспішну реєстрацію зі слабким паролем")
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void weakPassTest() {
+    void weakPassTest() {
         openMainPage();
         LoginPage authPage = new LoginPage();
         authPage.registerUser(email, "testPass", "testPass");

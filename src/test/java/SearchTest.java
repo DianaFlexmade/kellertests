@@ -9,7 +9,7 @@ public class SearchTest extends BaseTest {
 
     @Description("Тест на коректний пошук рекомендованого товара")
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void recommendedItemSearchTest() {
+    void recommendedItemSearchTest() {
         MainPage mainPage = new MainPage();
         SearchPage searchPage = new SearchPage();
         openMainPage();
@@ -21,7 +21,7 @@ public class SearchTest extends BaseTest {
 
     @Description("Тест на коректний пошук довільного товара")
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void successfulSearchTest() {
+    void successfulSearchTest() {
         MainPage mainPage = new MainPage();
         SearchPage searchPage = new SearchPage();
         openMainPage();
