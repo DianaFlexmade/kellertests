@@ -16,7 +16,8 @@ public class WishlistTest extends BaseTest {
         pdPage.acceptCookie();
         pdPage.addToWishlist();
         pdPage.goToWishlist();
-        wishlistPage.checkWishlistAmount();
+        wishlistPage.checkWishlistAmount().shouldNotHave(Condition.text("1"));
+//        wishlistPage.checkWishlistAmount().shouldHave(Condition.text("1"));
     }
 
     @Description("Тест на видалення товара з вішліста")
@@ -29,6 +30,7 @@ public class WishlistTest extends BaseTest {
         pdPage.addToWishlist();
         pdPage.goToWishlist();
         wishlistPage.removeItemFromWishlist();
-        wishlistPage.removeText().shouldHave(Condition.text("The article has been removed from your wishlist."));
+        wishlistPage.removeText().shouldNotHave(Condition.text("The article has been removed from your wishlist."));
+//        wishlistPage.removeText().shouldHave(Condition.text("The article has been removed from your wishlist."));
     }
 }

@@ -7,8 +7,8 @@ import static com.codeborne.selenide.Selenide.$;
 public class WishlistPage extends BasePage {
 
     private final SelenideElement removeElement = $("button > .product-block__remove-image");
-    public void checkWishlistAmount() {
-        $(".wishlist__amount").shouldHave(Condition.text("1"));
+    public SelenideElement checkWishlistAmount() {
+        return $(".wishlist__amount");
     }
     public void removeItemFromWishlist() {
         removeElement.should(Condition.exist);
