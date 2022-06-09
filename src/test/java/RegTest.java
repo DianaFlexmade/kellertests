@@ -13,11 +13,11 @@ public class RegTest extends BaseTest {
 
     @Description("Тест на успішну реєстрацію користувача")
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    void successRegTest() {
+    void successRegTest() throws InterruptedException {
         openMainPage();
         LoginPage authPage = new LoginPage();
         authPage.registerUser(email, "TestPassword1!", "TestPassword1!");
-        authPage.getSuccessImage().should(Condition.exist);
+        Thread.sleep(7000);
         Assert.assertNotEquals(authPage.openRegPageText().text(), TestValues.SUCCESS_MESSAGE);
     }
 
@@ -28,6 +28,7 @@ public class RegTest extends BaseTest {
         LoginPage authPage = new LoginPage();
         authPage.registerUser(email, "testPass", "testPass");
         authPage.getWeakPassMessage().shouldHave(Condition.text(TestValues.WEAK_PASS_MESSAGE));
-        Assert.assertEquals(authPage.getWeakPassMessage().text(), TestValues.WEAK_PASS_MESSAGE);
+        Assert.fail();
+//        Assert.assertEquals(authPage.getWeakPassMessage().text(), TestValues.WEAK_PASS_MESSAGE);
     }
 }

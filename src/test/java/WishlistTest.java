@@ -18,7 +18,8 @@ public class WishlistTest extends BaseTest {
         pdPage.addToWishlist();
         pdPage.goToWishlist();
         wishlistPage.checkWishlistAmount().should(Condition.exist);
-        Assert.assertEquals(wishlistPage.checkWishlistAmount().text(), "1");
+        Assert.fail();
+//        Assert.assertEquals(wishlistPage.checkWishlistAmount().text(), "1");
     }
 
     @Description("Тест на видалення товара з вішліста")
@@ -32,7 +33,8 @@ public class WishlistTest extends BaseTest {
         pdPage.goToWishlist();
         wishlistPage.removeItemFromWishlist();
         wishlistPage.removeText().should(Condition.exist);
-        Assert.assertNotEquals(wishlistPage.removeText().text(), "The article has been removed from your wishlist.");
+        Assert.fail();
+//        Assert.assertNotEquals(wishlistPage.removeText().text(), "The article has been removed from your wishlist.");
 //        wishlistPage.removeText().shouldHave(Condition.text("The article has been removed from your wishlist."));
     }
 }
