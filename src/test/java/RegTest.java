@@ -17,8 +17,8 @@ public class RegTest extends BaseTest {
         openMainPage();
         LoginPage authPage = new LoginPage();
         authPage.registerUser(email, "TestPassword1!", "TestPassword1!");
-        authPage.getSuccessRegMessage().shouldHave(Condition.exactText("REGISTRATION SUCCESSFUL"));
-        Assert.assertNotEquals(authPage.getSuccessRegMessage().text(), TestValues.SUCCESS_MESSAGE); // REGISTRATION SUCCESSFUL
+        authPage.getSuccessImage().should(Condition.exist);
+        Assert.assertNotEquals(authPage.openRegPageText().text(), TestValues.SUCCESS_MESSAGE);
     }
 
     @Description("Тест на неуспішну реєстрацію зі слабким паролем")
