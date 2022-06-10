@@ -9,33 +9,31 @@ import org.testng.annotations.Test;
 public class WishlistTest extends BaseTest {
     
     @Description("Тест на додання товара до вішліста")
-    @Test
-//            (retryAnalyzer = RetryAnalyzer.class)
+    @Test(retryAnalyzer = RetryAnalyzer.class)
+
     void addToWishlistTest() {
-//        PDPage pdPage = new PDPage();
-//        WishlistPage wishlistPage = new WishlistPage();
-//        openProductPage();
-//        pdPage.acceptCookie();
-//        pdPage.addToWishlist();
-//        pdPage.goToWishlist();
-//        wishlistPage.checkWishlistAmount().should(Condition.exist);
-        Assert.fail();
-//        Assert.assertEquals(wishlistPage.checkWishlistAmount().text(), "1");
+        PDPage pdPage = new PDPage();
+        WishlistPage wishlistPage = new WishlistPage();
+        openProductPage();
+        pdPage.acceptCookie();
+        pdPage.addToWishlist();
+        pdPage.goToWishlist();
+        wishlistPage.checkWishlistAmount().should(Condition.exist);
+        Assert.assertEquals(wishlistPage.checkWishlistAmount().text(), "1");
     }
 
     @Description("Тест на видалення товара з вішліста")
-    @Test
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     void removeFromWishlistTest() {
-//        PDPage pdPage = new PDPage();
-//        WishlistPage wishlistPage = new WishlistPage();
-//        openProductPage();
-//        pdPage.acceptCookie();
-//        pdPage.addToWishlist();
-//        pdPage.goToWishlist();
-//        wishlistPage.removeItemFromWishlist();
-//        wishlistPage.removeText().should(Condition.exist);
-        Assert.fail();
-//        Assert.assertNotEquals(wishlistPage.removeText().text(), "The article has been removed from your wishlist.");
-//        wishlistPage.removeText().shouldHave(Condition.text("The article has been removed from your wishlist."));
+        PDPage pdPage = new PDPage();
+        WishlistPage wishlistPage = new WishlistPage();
+        openProductPage();
+        pdPage.acceptCookie();
+        pdPage.addToWishlist();
+        pdPage.goToWishlist();
+        wishlistPage.removeItemFromWishlist();
+        wishlistPage.removeText().should(Condition.exist);
+        wishlistPage.removeText().shouldHave(Condition.text("The article has been removed from your wishlist."));
+        Assert.assertEquals(wishlistPage.removeText().text(), "The article has been removed from your wishlist.");
     }
 }

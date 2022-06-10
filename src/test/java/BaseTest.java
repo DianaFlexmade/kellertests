@@ -17,7 +17,6 @@ abstract public class BaseTest {
         Configuration.driverManagerEnabled = true;
         Configuration.browserSize = "1650x950";
         Configuration.timeout = 10000;
-
     }
 
     @BeforeMethod
