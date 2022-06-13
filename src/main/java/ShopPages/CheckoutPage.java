@@ -3,6 +3,7 @@ package ShopPages;
 import com.codeborne.selenide.ClickOptions;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -43,9 +44,10 @@ public class CheckoutPage extends BasePage {
     private final SelenideElement registerCheckoutTerms = $(".test-register-terms-label");
     private final SelenideElement registerCheckout = $(".test-register-button");
 
-    public void goToPay() {
+    public void goToCheckout() {
         click(goToCheckoutButton);
     }
+
     public void checkoutRegister(String firstName, String lastName, String email, String pass) {
         click(registerCheckoutButton);
         registerCheckoutFirstname.sendKeys(firstName);
@@ -53,7 +55,7 @@ public class CheckoutPage extends BasePage {
         registerCheckoutEmail.sendKeys(email);
         registerCheckoutPass.sendKeys(pass);
         registerCheckoutTerms.scrollIntoView(true);
-        registerCheckoutTerms.click(ClickOptions.usingDefaultMethod().offset(-150,0));
+        registerCheckoutTerms.click(ClickOptions.usingDefaultMethod().offset(-150, 0));
         click(registerCheckout);
     }
 
@@ -76,7 +78,8 @@ public class CheckoutPage extends BasePage {
         city.sendKeys("test");
         click(continueToPayment);
     }
-    public void setPayment(){
+
+    public void setPaymentTypeToPayone() {
         click($(".test-choose-payone-label"));
     }
 

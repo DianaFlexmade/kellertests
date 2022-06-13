@@ -13,17 +13,14 @@ import static com.codeborne.selenide.Selenide.open;
 
 abstract public class BaseTest {
     protected final Logger logger = LoggerFactory.getLogger(BaseTest.class);
-    public void setup() {
-        Configuration.driverManagerEnabled = true;
-        Configuration.browserSize = "1650x950";
-        Configuration.timeout = 10000;
-    }
 
     @BeforeMethod
     @Parameters("browser")
 
-    public void setUp(@Optional("chrome") String browser) throws Exception{
-            setup();
+    public void setUp(@Optional("firefox") String browser) throws Exception{
+        Configuration.driverManagerEnabled = true;
+        Configuration.browserSize = "1650x950";
+        Configuration.timeout = 10000;
 
         if(browser.equalsIgnoreCase("firefox")){
             WebDriverManager.firefoxdriver().setup();
@@ -57,5 +54,4 @@ abstract public class BaseTest {
     public void tearDown() {
         Selenide.closeWebDriver();
     }
-
 }

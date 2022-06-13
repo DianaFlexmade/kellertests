@@ -20,6 +20,9 @@ public class LoginPage extends BasePage {
     private final SelenideElement wrongPassMessage = $("div> .input-box__note--error");
     private final SelenideElement loggedIn = $(byXpath("//div[@class=\"header-top-right__dropdown-hold header-top-right__dropdown-hold--user show-desktop\"]"));
 
+    public void openLoginPage(){
+        $(".test-login-link").click();
+    }
     public SelenideElement openRegPageText() {
         return successRegText;
     }
@@ -41,7 +44,7 @@ public class LoginPage extends BasePage {
     public void registerUser(String emailFieldValue, String passwordFieldValue, String repeatPasswordFieldValue) {
         LoginPage loginPage = new LoginPage();
         loginPage.acceptCookie();
-        loginPage.closeCountryLayer();
+        loginPage.isCountryLayerHidden();
         loginPage.openLoginPage();
         click($( ".test-register-popup-button"));
         loginPage.openRegPageText().shouldHave(Condition.exactText("CREATE CUSTOMER ACCOUNT"));
@@ -54,10 +57,10 @@ public class LoginPage extends BasePage {
     }
 
     public void authorizeUser(String emailFieldValue, String passwordFieldValue) {
-        MainPage mainPage = new MainPage();
-        mainPage.acceptCookie();
-        mainPage.closeCountryLayer();
-        mainPage.openLoginPage();
+        LoginPage loginPage = new LoginPage();
+        loginPage.acceptCookie();
+        loginPage.isCountryLayerHidden();
+        loginPage.openLoginPage();
         click(loginField);
         loginField.sendKeys(emailFieldValue);
         passwordField.sendKeys(passwordFieldValue);
