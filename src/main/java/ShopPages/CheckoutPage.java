@@ -108,10 +108,9 @@ public class CheckoutPage extends BasePage {
         pay.shouldBe(Condition.visible);
     }
 
-    public void pay() throws InterruptedException {
+    public void pay() {
         pay.shouldBe(Condition.exist);
         click(pay);
-        Thread.sleep(6000);
     }
 
     public SelenideElement getThankYouText() {

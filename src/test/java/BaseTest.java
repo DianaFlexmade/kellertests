@@ -17,7 +17,7 @@ abstract public class BaseTest {
     @BeforeMethod
     @Parameters("browser")
 
-    public void setUp(@Optional("firefox") String browser) throws Exception{
+    public void setUp(@Optional("chrome") String browser) throws Exception{
         Configuration.driverManagerEnabled = true;
         Configuration.browserSize = "1650x950";
         Configuration.timeout = 10000;

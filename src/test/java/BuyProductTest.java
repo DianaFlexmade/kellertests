@@ -14,7 +14,7 @@ public class BuyProductTest extends BaseTest{
 
     @Description("Тест на покупку підписки Premium")
     @Test(description = "Тест на покупку підписки Premium", retryAnalyzer = RetryAnalyzer.class)
-    void buyPremiumTest() throws InterruptedException {
+    void buyPremiumTest()  {
         PDPage pdPage = new PDPage();
         CheckoutPage checkoutPage = new CheckoutPage();
         openPremiumPage();
@@ -22,7 +22,6 @@ public class BuyProductTest extends BaseTest{
         checkoutPage.isCountryLayerHidden();
         pdPage.buyPremium();
         openCheckoutPage();
-//        Thread.sleep(7000);
         checkoutPage.goToCheckout();
         checkoutPage.checkoutRegister("test", "test", faker.internet().emailAddress(), "19111994qQ!");
         checkoutPage.setPersonalDataForPremium();
@@ -32,7 +31,7 @@ public class BuyProductTest extends BaseTest{
     }
     @Description("Тест на успішну покупку товара авторизованим користувачем")
     @Test(description = "Тест на успішну покупку товара авторизованим користувачем", retryAnalyzer = RetryAnalyzer.class)
-    void purchaseProductTest() throws InterruptedException {
+    void purchaseProductTest() {
         LoginPage authPage = new LoginPage();
         PDPage pdPage = new PDPage();
         CheckoutPage checkoutPage = new CheckoutPage();
