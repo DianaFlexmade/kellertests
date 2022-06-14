@@ -1,6 +1,8 @@
 package ShopPages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
+
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -10,6 +12,7 @@ public class SearchPage extends BasePage {
     public SelenideElement getSearchResult(){
         return searchResult;
     }
+    @Step("Обрати рекомендований продукт")
     public void selectRecommendedProduct() {
         click(recommendedProduct);
     }

@@ -7,7 +7,6 @@ import java.util.Properties;
 public class ConfigReader {
     public static Properties getPropertyObject() throws IOException {
         FileInputStream fp = new FileInputStream("src/main/resources/credentials.properties");
-
         Properties prop = new Properties();
         prop.load(fp);
         return prop;

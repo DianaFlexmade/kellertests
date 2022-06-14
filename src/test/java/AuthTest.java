@@ -3,9 +3,9 @@ import com.codeborne.selenide.Condition;
 import helpers.ConfigReader;
 import helpers.RetryAnalyzer;
 import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.IOException;

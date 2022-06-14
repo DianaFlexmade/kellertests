@@ -3,14 +3,12 @@ package ShopPages;
 import com.codeborne.selenide.ClickOptions;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-
-import java.time.Duration;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 
 public class CheckoutPage extends BasePage {
-
     private final SelenideElement loginCheckout = $(".test-login-email");
     private final SelenideElement passCheckout = $(".test-login-password");
     private final SelenideElement signUpCheckout = $(".test-login-button");
@@ -35,7 +33,7 @@ public class CheckoutPage extends BasePage {
     private final SelenideElement streetNo = $(byXpath("//input[@name=\"shipping[street_no]\"]"));
     private final SelenideElement postCode = $(byXpath("//input[@name=\"shipping[postal]\"]"));
     private final SelenideElement city = $(byXpath("//input[@name=\"shipping[city]\"]"));
-    private SelenideElement addedPremium = $(byXpath("//a[@href=\"https://stage.keller-sports.com/p/keller-premium-membership-UZUKS031001.html\"]"));
+    private final SelenideElement addedPremium = $(byXpath("//a[@href=\"https://stage.keller-sports.com/p/keller-premium-membership-UZUKS031001.html\"]"));
     private final SelenideElement addedProduct = $(byXpath("//a[@href=\"https://stage.keller-sports.com/p/nike-fury-3.0-headband-REQNI00O000.html\"]"));
     private final SelenideElement dateOfBirthDay = $(byXpath("//select[@name=\"shipping[bday_day]\"]"));
     private final SelenideElement dateOfBirthMonth = $(byXpath("//select[@name=\"shipping[bday_month]\"]"));
@@ -64,13 +62,12 @@ public class CheckoutPage extends BasePage {
         click(registerCheckout);
         return new CheckoutPage();
     }
-
+    @Step("Перейти до оплати")
     public CheckoutPage goToPayment() {
         continueToPayment.shouldBe(Condition.visible);
         click(continueToPayment);
         return new CheckoutPage();
     }
-
     public CheckoutPage getAddedProduct() {
         addedProduct.should(Condition.exist);
         return new CheckoutPage();
@@ -80,7 +77,7 @@ public class CheckoutPage extends BasePage {
         addedPremium.should(Condition.exist);
         return new CheckoutPage();
     }
-
+    @Step("Додати адресу")
     public CheckoutPage setPersonalDataForPremium() {
         genderSelect.shouldBe(Condition.visible);
         click(genderSelect);
@@ -102,6 +99,7 @@ public class CheckoutPage extends BasePage {
         return new CheckoutPage();
     }
 
+    @Step("Додати кредитну картку")
     public CheckoutPage setPaymentData() {
         iframeForCardNumber.shouldBe(Condition.visible);
         switchTo().frame(iframeForCardNumber);
@@ -121,7 +119,7 @@ public class CheckoutPage extends BasePage {
         pay.shouldBe(Condition.visible);
         return new CheckoutPage();
     }
-
+    @Step("Оплатити")
     public void pay() {
         pay.shouldBe(Condition.exist);
         click(pay);
@@ -130,7 +128,7 @@ public class CheckoutPage extends BasePage {
     public SelenideElement getThankYouText() {
         return thankYou;
     }
-
+    @Step("Авторизація на сторінці чекаута")
     public CheckoutPage checkoutLogin(String checkoutLogin, String checkoutPass) {
         loginCheckout.sendKeys(checkoutLogin);
         passCheckout.sendKeys(checkoutPass);

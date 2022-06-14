@@ -3,6 +3,7 @@ package ShopPages;
 import com.codeborne.selenide.ClickOptions;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.apache.commons.logging.Log;
 
 import static com.codeborne.selenide.Selectors.byXpath;
@@ -22,6 +23,7 @@ public class LoginPage extends BasePage {
     private final SelenideElement wrongPassMessage = $("div> .input-box__note--error");
     private final SelenideElement loggedIn = $(byXpath("//div[@class=\"header-top-right__dropdown-hold header-top-right__dropdown-hold--user show-desktop\"]"));
 
+    @Step("Відкрити сторінку авторизації")
     public void openLoginPage(){
         $(".test-login-link").click();
     }
@@ -30,9 +32,6 @@ public class LoginPage extends BasePage {
     }
     public SelenideElement getLoggedIn(){
         return loggedIn;
-    }
-    public SelenideElement getSuccessImage() {
-        return successImage;
     }
 
     public SelenideElement getWeakPassMessage() {
@@ -43,6 +42,7 @@ public class LoginPage extends BasePage {
         return wrongPassMessage;
     }
 
+    @Step("Зареєструвати користувача")
     public void registerUser(String emailFieldValue, String passwordFieldValue, String repeatPasswordFieldValue) {
         LoginPage loginPage = new LoginPage();
         loginPage.acceptCookie();
@@ -58,6 +58,7 @@ public class LoginPage extends BasePage {
         click(registerButton);
     }
 
+    @Step("Авторизувати користувача")
     public LoginPage authorizeUser(String emailFieldValue, String passwordFieldValue) {
         LoginPage loginPage = new LoginPage();
         loginPage.acceptCookie();
