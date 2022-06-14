@@ -12,14 +12,14 @@ public class PDPage extends BasePage{
     private final SelenideElement pdpWishlistIcon = $("div .wishlist-heart--animated");
     private final SelenideElement wishListButton = $(".js-miniwishlist");
     private final SelenideElement addToBasket = $("#js_add_to_basket");
+    private SelenideElement basketCount = $("#js_product_quantity");
     public void addProductToBasket() {
-        addToBasket.shouldBe(Condition.visible);
-        actions().moveToElement(addToBasket).click(addToBasket).perform();
+        actions().moveToElement(addToBasket).perform();
         click(addToBasket);
     }
 
     public void addToWishlist() {
-        actions().moveToElement(pdpWishlistIcon).click(pdpWishlistIcon).perform();
+        actions().moveToElement(pdpWishlistIcon).perform();
         click(pdpWishlistIcon);
     }
 
@@ -29,6 +29,8 @@ public class PDPage extends BasePage{
 
     public void buyPremium() {
         click(addPremiumToBasket);
-//        $("js_product_quantity").shouldHave(Condition.text("1"));
+    }
+    public SelenideElement getBasketCount() {
+        return basketCount;
     }
 }

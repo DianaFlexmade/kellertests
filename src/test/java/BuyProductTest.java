@@ -2,6 +2,7 @@ import ShopPages.CheckoutPage;
 import ShopPages.LoginPage;
 import ShopPages.PDPage;
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.conditions.Text;
 import com.github.javafaker.Faker;
 import helpers.RetryAnalyzer;
 import helpers.TestValues;
@@ -39,6 +40,7 @@ public class BuyProductTest extends BaseTest{
         authPage.acceptCookie();
         authPage.isCountryLayerHidden();
         pdPage.addProductToBasket();
+        pdPage.getBasketCount().shouldHave(Condition.text("1"));
         openCheckoutPage();
         checkoutPage.goToCheckout();
         checkoutPage.checkoutLogin(TestValues.USER_EMAIL, TestValues.USER_PASS);
