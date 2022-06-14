@@ -10,9 +10,10 @@ public class WishlistPage extends BasePage {
     public SelenideElement checkWishlistAmount() {
         return $(".wishlist__amount");
     }
-    public void removeItemFromWishlist() {
+    public WishlistPage removeItemFromWishlist() {
         removeElement.should(Condition.exist);
         click(removeElement);
+        return new WishlistPage();
     }
     public SelenideElement removeText() {
         return $(".product-layer__text");

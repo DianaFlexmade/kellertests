@@ -2,54 +2,57 @@ import ShopPages.CheckoutPage;
 import ShopPages.LoginPage;
 import ShopPages.PDPage;
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.conditions.Text;
 import com.github.javafaker.Faker;
+import helpers.ConfigReader;
 import helpers.RetryAnalyzer;
-import helpers.TestValues;
 import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class BuyProductTest extends BaseTest{
+import java.io.IOException;
+
+public class BuyProductTest extends BaseTest {
     Faker faker = new Faker();
+    PDPage pdPage = new PDPage();
+    LoginPage authPage = new LoginPage();
+    CheckoutPage checkoutPage = new CheckoutPage();
 
     @Description("Тест на покупку підписки Premium")
     @Test(description = "Тест на покупку підписки Premium", retryAnalyzer = RetryAnalyzer.class)
-    void buyPremiumTest()  {
-        PDPage pdPage = new PDPage();
-        CheckoutPage checkoutPage = new CheckoutPage();
+    void buyPremiumTest() {
         openPremiumPage();
-        checkoutPage.acceptCookie();
-        checkoutPage.isCountryLayerHidden();
-        pdPage.buyPremium();
+        checkoutPage.acceptCookie()
+                .isCountryLayerVisible();
+        pdPage.buyPremium()
+                .getBasketCount().shouldHave(Condition.text("1"));
         openCheckoutPage();
-        checkoutPage.goToCheckout();
-        checkoutPage.checkoutRegister("test", "test", faker.internet().emailAddress(), "19111994qQ!");
-        checkoutPage.setPersonalDataForPremium();
-        checkoutPage.setPaymentData();
-        checkoutPage.pay();
+        checkoutPage.getAddedPremium()
+                .goToCheckout()
+                .checkoutRegister("test", "test", faker.internet().emailAddress(), "19111994qQ!")
+                .setPersonalDataForPremium()
+                .setPaymentData()
+                .pay();
         Assert.assertEquals(checkoutPage.getThankYouText().text(), "DONE!");
     }
+
     @Description("Тест на успішну покупку товара авторизованим користувачем")
     @Test(description = "Тест на успішну покупку товара авторизованим користувачем", retryAnalyzer = RetryAnalyzer.class)
-    void purchaseProductTest() {
-        LoginPage authPage = new LoginPage();
-        PDPage pdPage = new PDPage();
-        CheckoutPage checkoutPage = new CheckoutPage();
+    void purchaseProductTest() throws IOException {
         openProductPage();
-        authPage.acceptCookie();
-        authPage.isCountryLayerHidden();
-        pdPage.addProductToBasket();
-        pdPage.getBasketCount().shouldHave(Condition.text("1"));
+        authPage.acceptCookie()
+                .isCountryLayerVisible();
+        pdPage.addProductToBasket()
+                .getBasketCount().shouldHave(Condition.text("1"));
         openCheckoutPage();
-        checkoutPage.goToCheckout();
-        checkoutPage.checkoutLogin(TestValues.USER_EMAIL, TestValues.USER_PASS);
-        checkoutPage.getAddedProduct().should(Condition.exist);
-        checkoutPage.goToCheckout();
-        checkoutPage.goToPayment();
-        checkoutPage.setPaymentTypeToPayone();
-        checkoutPage.setPaymentData();
-        checkoutPage.pay();
+        checkoutPage.getAddedProduct()
+                .goToCheckout()
+                .checkoutLogin(ConfigReader.getUsername(), ConfigReader.getPassword())
+                .getAddedProduct()
+                .goToCheckout()
+                .goToPayment()
+                .setPaymentTypeToPayone()
+                .setPaymentData()
+                .pay();
         Assert.assertEquals(checkoutPage.getThankYouText().text(), "DONE!");
     }
 }

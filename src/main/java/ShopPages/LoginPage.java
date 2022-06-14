@@ -3,6 +3,8 @@ package ShopPages;
 import com.codeborne.selenide.ClickOptions;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import org.apache.commons.logging.Log;
+
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -44,7 +46,7 @@ public class LoginPage extends BasePage {
     public void registerUser(String emailFieldValue, String passwordFieldValue, String repeatPasswordFieldValue) {
         LoginPage loginPage = new LoginPage();
         loginPage.acceptCookie();
-        loginPage.isCountryLayerHidden();
+        loginPage.isCountryLayerVisible();
         loginPage.openLoginPage();
         click($( ".test-register-popup-button"));
         loginPage.openRegPageText().shouldHave(Condition.exactText("CREATE CUSTOMER ACCOUNT"));
@@ -56,14 +58,15 @@ public class LoginPage extends BasePage {
         click(registerButton);
     }
 
-    public void authorizeUser(String emailFieldValue, String passwordFieldValue) {
+    public LoginPage authorizeUser(String emailFieldValue, String passwordFieldValue) {
         LoginPage loginPage = new LoginPage();
         loginPage.acceptCookie();
-        loginPage.isCountryLayerHidden();
+        loginPage.isCountryLayerVisible();
         loginPage.openLoginPage();
         click(loginField);
         loginField.sendKeys(emailFieldValue);
         passwordField.sendKeys(passwordFieldValue);
         loginButton.click();
+        return new LoginPage();
     }
 }

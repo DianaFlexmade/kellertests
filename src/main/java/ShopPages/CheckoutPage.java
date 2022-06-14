@@ -4,10 +4,13 @@ import com.codeborne.selenide.ClickOptions;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 
 public class CheckoutPage extends BasePage {
+
     private final SelenideElement loginCheckout = $(".test-login-email");
     private final SelenideElement passCheckout = $(".test-login-password");
     private final SelenideElement signUpCheckout = $(".test-login-button");
@@ -32,7 +35,7 @@ public class CheckoutPage extends BasePage {
     private final SelenideElement streetNo = $(byXpath("//input[@name=\"shipping[street_no]\"]"));
     private final SelenideElement postCode = $(byXpath("//input[@name=\"shipping[postal]\"]"));
     private final SelenideElement city = $(byXpath("//input[@name=\"shipping[city]\"]"));
-    private final SelenideElement premiumImage = $(".product-list__product-image");
+    private SelenideElement addedPremium = $(byXpath("//a[@href=\"https://stage.keller-sports.com/p/keller-premium-membership-UZUKS031001.html\"]"));
     private final SelenideElement addedProduct = $(byXpath("//a[@href=\"https://stage.keller-sports.com/p/nike-fury-3.0-headband-REQNI00O000.html\"]"));
     private final SelenideElement dateOfBirthDay = $(byXpath("//select[@name=\"shipping[bday_day]\"]"));
     private final SelenideElement dateOfBirthMonth = $(byXpath("//select[@name=\"shipping[bday_month]\"]"));
@@ -45,12 +48,12 @@ public class CheckoutPage extends BasePage {
     private final SelenideElement registerCheckoutTerms = $(".test-register-terms-label");
     private final SelenideElement registerCheckout = $(".test-register-button");
 
-    public void goToCheckout() {
-        goToCheckoutButton.should(Condition.exist);
-        click(goToCheckoutButton);
+    public CheckoutPage goToCheckout() {
+        goToCheckoutButton.click();
+        return new CheckoutPage();
     }
 
-    public void checkoutRegister(String firstName, String lastName, String email, String pass) {
+    public CheckoutPage checkoutRegister(String firstName, String lastName, String email, String pass) {
         click(registerCheckoutButton);
         registerCheckoutFirstname.sendKeys(firstName);
         registerCheckoutLastname.sendKeys(lastName);
@@ -59,18 +62,26 @@ public class CheckoutPage extends BasePage {
         registerCheckoutTerms.scrollIntoView(true);
         registerCheckoutTerms.click(ClickOptions.usingDefaultMethod().offset(-150, 0));
         click(registerCheckout);
+        return new CheckoutPage();
     }
 
-    public void goToPayment() {
+    public CheckoutPage goToPayment() {
         continueToPayment.shouldBe(Condition.visible);
         click(continueToPayment);
+        return new CheckoutPage();
     }
 
-    public SelenideElement getAddedProduct() {
-        return addedProduct;
+    public CheckoutPage getAddedProduct() {
+        addedProduct.should(Condition.exist);
+        return new CheckoutPage();
     }
 
-    public void setPersonalDataForPremium() {
+    public CheckoutPage getAddedPremium() {
+        addedPremium.should(Condition.exist);
+        return new CheckoutPage();
+    }
+
+    public CheckoutPage setPersonalDataForPremium() {
         genderSelect.shouldBe(Condition.visible);
         click(genderSelect);
         firstName.sendKeys("test");
@@ -83,16 +94,18 @@ public class CheckoutPage extends BasePage {
         postCode.sendKeys("12345");
         city.sendKeys("test");
         click(continueToPayment);
+        return new CheckoutPage();
     }
 
-    public void setPaymentTypeToPayone() {
+    public CheckoutPage setPaymentTypeToPayone() {
         click($(".test-choose-payone-label"));
+        return new CheckoutPage();
     }
 
-    public void setPaymentData() {
+    public CheckoutPage setPaymentData() {
         iframeForCardNumber.shouldBe(Condition.visible);
         switchTo().frame(iframeForCardNumber);
-        cardNumber.sendKeys("4988438843884305");
+        cardNumber.sendKeys("4000060000000006");
         switchTo().parentFrame();
         cardHolder.sendKeys("test test");
         switchTo().frame(iframeForValidUntilMonth);
@@ -106,6 +119,7 @@ public class CheckoutPage extends BasePage {
         switchTo().parentFrame();
         click(checkOrder);
         pay.shouldBe(Condition.visible);
+        return new CheckoutPage();
     }
 
     public void pay() {
@@ -117,9 +131,10 @@ public class CheckoutPage extends BasePage {
         return thankYou;
     }
 
-    public void checkoutLogin(String checkoutLogin, String checkoutPass) {
+    public CheckoutPage checkoutLogin(String checkoutLogin, String checkoutPass) {
         loginCheckout.sendKeys(checkoutLogin);
         passCheckout.sendKeys(checkoutPass);
         click(signUpCheckout);
+        return new CheckoutPage();
     }
 }

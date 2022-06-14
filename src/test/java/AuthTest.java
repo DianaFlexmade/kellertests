@@ -1,30 +1,36 @@
 import ShopPages.LoginPage;
 import com.codeborne.selenide.Condition;
+import helpers.ConfigReader;
 import helpers.RetryAnalyzer;
-import helpers.TestValues;
 import io.qameta.allure.Description;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 public class AuthTest extends BaseTest{
+    LoginPage authPage = new LoginPage();
+
+    @BeforeMethod
+    void openPage() {
+        openMainPage();
+    }
 
     @Description("Тест на успішну авторизацію користувача")
     @Test(description = "Тест на успішну авторизацію користувача", retryAnalyzer = RetryAnalyzer.class)
-    public void successAuthTest() {
-        openMainPage();
-        LoginPage authPage = new LoginPage();
-        authPage.authorizeUser(TestValues.USER_EMAIL, TestValues.USER_PASS);
-        authPage.getLoggedIn().shouldBe(Condition.visible);
+    public void successAuthTest() throws IOException {
+        authPage.authorizeUser(ConfigReader.getUsername(), ConfigReader.getPassword())
+                .getLoggedIn().shouldBe(Condition.visible);
         Assert.assertTrue(authPage.getLoggedIn().exists());
     }
 
     @Description("Тест на неуспішну авторизацію із неправильним паролем")
     @Test(description = "Тест на неуспішну авторизацію із неправильним паролем", retryAnalyzer = RetryAnalyzer.class)
-    void wrongPassAuthTest() {
-        openMainPage();
-        LoginPage authPage = new LoginPage();
-        authPage.authorizeUser(TestValues.USER_EMAIL, "19111993test");
-        authPage.getWrongPassMessage().shouldHave(Condition.text(TestValues.FAILED_LOGIN_MESSAGE));
-        Assert.assertEquals(authPage.getWrongPassMessage().text(), TestValues.FAILED_LOGIN_MESSAGE);
+    void wrongPassAuthTest() throws IOException {
+        authPage.authorizeUser(ConfigReader.getUsername(), "19111993test")
+                .getWrongPassMessage().shouldHave(Condition.text("Please check your e-mail address and password."));
+        Assert.assertEquals(authPage.getWrongPassMessage().text(), "Please check your e-mail address and password.");
     }
 }

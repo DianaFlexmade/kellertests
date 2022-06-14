@@ -1,5 +1,6 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import helpers.Urls;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.slf4j.Logger;
@@ -16,7 +17,6 @@ abstract public class BaseTest {
 
     @BeforeMethod
     @Parameters("browser")
-
     public void setUp(@Optional("firefox") String browser) throws Exception{
         Configuration.driverManagerEnabled = true;
         Configuration.browserSize = "1650x950";
