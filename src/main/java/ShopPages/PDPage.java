@@ -14,8 +14,8 @@ public class PDPage extends BasePage{
     private final SelenideElement addToBasket = $("#js_add_to_basket");
     public void addProductToBasket() {
         addToBasket.shouldBe(Condition.visible);
+        actions().moveToElement(addToBasket).click(addToBasket).perform();
         click(addToBasket);
-//        $("js_product_quantity").shouldHave(Condition.text("1"));
     }
 
     public void addToWishlist() {

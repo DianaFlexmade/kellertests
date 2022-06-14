@@ -1,6 +1,7 @@
 import ShopPages.CheckoutPage;
 import ShopPages.LoginPage;
 import ShopPages.PDPage;
+import com.codeborne.selenide.Condition;
 import com.github.javafaker.Faker;
 import helpers.RetryAnalyzer;
 import helpers.TestValues;
@@ -39,11 +40,10 @@ public class BuyProductTest extends BaseTest{
         authPage.acceptCookie();
         authPage.isCountryLayerHidden();
         pdPage.addProductToBasket();
-        Thread.sleep(7000);
         openCheckoutPage();
-        Thread.sleep(7000);
         checkoutPage.goToCheckout();
         checkoutPage.checkoutLogin(TestValues.USER_EMAIL, TestValues.USER_PASS);
+        checkoutPage.getAddedProduct().should(Condition.exist);
         checkoutPage.goToCheckout();
         checkoutPage.goToPayment();
         checkoutPage.setPaymentTypeToPayone();

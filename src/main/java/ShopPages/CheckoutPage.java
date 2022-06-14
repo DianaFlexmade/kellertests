@@ -33,6 +33,7 @@ public class CheckoutPage extends BasePage {
     private final SelenideElement postCode = $(byXpath("//input[@name=\"shipping[postal]\"]"));
     private final SelenideElement city = $(byXpath("//input[@name=\"shipping[city]\"]"));
     private final SelenideElement premiumImage = $(".product-list__product-image");
+    private final SelenideElement addedProduct = $(byXpath("//a[@href=\"https://stage.keller-sports.com/p/nike-fury-3.0-headband-REQNI00O000.html\"]"));
     private final SelenideElement dateOfBirthDay = $(byXpath("//select[@name=\"shipping[bday_day]\"]"));
     private final SelenideElement dateOfBirthMonth = $(byXpath("//select[@name=\"shipping[bday_month]\"]"));
     private final SelenideElement dateOfBirthYear = $(byXpath("//select[@name=\"shipping[bday_year]\"]"));
@@ -45,6 +46,7 @@ public class CheckoutPage extends BasePage {
     private final SelenideElement registerCheckout = $(".test-register-button");
 
     public void goToCheckout() {
+        goToCheckoutButton.shouldBe(Condition.visible);
         click(goToCheckoutButton);
     }
 
@@ -62,6 +64,10 @@ public class CheckoutPage extends BasePage {
     public void goToPayment() {
         continueToPayment.shouldBe(Condition.visible);
         click(continueToPayment);
+    }
+
+    public SelenideElement getAddedProduct() {
+        return addedProduct;
     }
 
     public void setPersonalDataForPremium() {
