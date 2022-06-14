@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class SearchTest extends BaseTest {
 
     @Description("Тест на коректний пошук рекомендованого товара")
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Тест на коректний пошук рекомендованого товара", retryAnalyzer = RetryAnalyzer.class)
     void recommendedItemSearchTest() {
         SearchPage searchPage = new SearchPage();
         openMainPage();
@@ -18,7 +18,7 @@ public class SearchTest extends BaseTest {
     }
 
     @Description("Тест на коректний пошук довільного товара")
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Тест на коректний пошук довільного товара", retryAnalyzer = RetryAnalyzer.class)
     void successfulSearchTest() {
         SearchPage searchPage = new SearchPage();
         openMainPage();

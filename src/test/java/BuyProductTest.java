@@ -13,7 +13,7 @@ public class BuyProductTest extends BaseTest{
     Faker faker = new Faker();
 
     @Description("Тест на покупку підписки Premium")
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Тест на покупку підписки Premium", retryAnalyzer = RetryAnalyzer.class)
     void buyPremiumTest() throws InterruptedException {
         PDPage pdPage = new PDPage();
         CheckoutPage checkoutPage = new CheckoutPage();
@@ -22,7 +22,7 @@ public class BuyProductTest extends BaseTest{
         checkoutPage.isCountryLayerHidden();
         pdPage.buyPremium();
         openCheckoutPage();
-        Thread.sleep(7000);
+//        Thread.sleep(7000);
         checkoutPage.goToCheckout();
         checkoutPage.checkoutRegister("test", "test", faker.internet().emailAddress(), "19111994qQ!");
         checkoutPage.setPersonalDataForPremium();
@@ -31,7 +31,7 @@ public class BuyProductTest extends BaseTest{
         Assert.assertEquals(checkoutPage.getThankYouText().text(), "DONE!");
     }
     @Description("Тест на успішну покупку товара авторизованим користувачем")
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Тест на успішну покупку товара авторизованим користувачем", retryAnalyzer = RetryAnalyzer.class)
     void purchaseProductTest() throws InterruptedException {
         LoginPage authPage = new LoginPage();
         PDPage pdPage = new PDPage();

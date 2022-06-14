@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 public class AuthTest extends BaseTest{
 
     @Description("Тест на успішну авторизацію користувача")
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Тест на успішну авторизацію користувача", retryAnalyzer = RetryAnalyzer.class)
     public void successAuthTest() {
         openMainPage();
         LoginPage authPage = new LoginPage();
@@ -19,7 +19,7 @@ public class AuthTest extends BaseTest{
     }
 
     @Description("Тест на неуспішну авторизацію із неправильним паролем")
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Тест на неуспішну авторизацію із неправильним паролем", retryAnalyzer = RetryAnalyzer.class)
     void wrongPassAuthTest() {
         openMainPage();
         LoginPage authPage = new LoginPage();

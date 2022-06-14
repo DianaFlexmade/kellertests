@@ -46,7 +46,7 @@ public class CheckoutPage extends BasePage {
     private final SelenideElement registerCheckout = $(".test-register-button");
 
     public void goToCheckout() {
-        goToCheckoutButton.shouldBe(Condition.visible);
+        goToCheckoutButton.should(Condition.exist);
         click(goToCheckoutButton);
     }
 

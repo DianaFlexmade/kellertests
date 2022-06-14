@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 public class WishlistTest extends BaseTest {
     
     @Description("Тест на додання товара до вішліста")
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Тест на коректний пошук довільного товара", retryAnalyzer = RetryAnalyzer.class)
 
     void addToWishlistTest() {
         PDPage pdPage = new PDPage();
@@ -23,7 +23,7 @@ public class WishlistTest extends BaseTest {
     }
 
     @Description("Тест на видалення товара з вішліста")
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Тест на коректний пошук довільного товара", retryAnalyzer = RetryAnalyzer.class)
     void removeFromWishlistTest() {
         PDPage pdPage = new PDPage();
         WishlistPage wishlistPage = new WishlistPage();
