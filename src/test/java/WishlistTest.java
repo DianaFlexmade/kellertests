@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 public class WishlistTest extends BaseTest {
     PDPage pdPage = new PDPage();
     WishlistPage wishlistPage = new WishlistPage();
-
     @Description("Тест на додання товара до вішліста")
     @Test(description = "Тест на коректний пошук довільного товара", retryAnalyzer = RetryAnalyzer.class)
     void addToWishlistTest() {

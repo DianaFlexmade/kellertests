@@ -14,5 +14,6 @@ public class SearchPage extends BasePage {
     }
     public void selectRecommendedProduct() {
         click(recommendedProduct);
+        logger.info("Selected recommended product");
     }
 }

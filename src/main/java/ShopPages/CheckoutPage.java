@@ -47,6 +47,7 @@ public class CheckoutPage extends BasePage {
 
     public CheckoutPage goToCheckout() {
         goToCheckoutButton.click();
+        logger.info("Go to checkout");
         return new CheckoutPage();
     }
 
@@ -59,6 +60,7 @@ public class CheckoutPage extends BasePage {
         registerCheckoutTerms.scrollIntoView(true);
         registerCheckoutTerms.click(ClickOptions.usingDefaultMethod().offset(-150, 0));
         click(registerCheckout);
+        logger.info("Registered a user on checkout");
         return new CheckoutPage();
     }
 
@@ -76,7 +78,7 @@ public class CheckoutPage extends BasePage {
         addedPremium.should(Condition.exist);
         return new CheckoutPage();
     }
-//    @Step("Додати адресу")
+
     public CheckoutPage setPersonalDataForPremium() {
         genderSelect.shouldBe(Condition.visible);
         click(genderSelect);
@@ -90,6 +92,7 @@ public class CheckoutPage extends BasePage {
         postCode.sendKeys("12345");
         city.sendKeys("test");
         click(continueToPayment);
+        logger.info("Set personal data for Premium membership");
         return new CheckoutPage();
     }
 
@@ -98,7 +101,6 @@ public class CheckoutPage extends BasePage {
         return new CheckoutPage();
     }
 
-//    @Step("Додати кредитну картку")
     public CheckoutPage setPaymentData() {
         iframeForCardNumber.shouldBe(Condition.visible);
         switchTo().frame(iframeForCardNumber);
@@ -116,22 +118,23 @@ public class CheckoutPage extends BasePage {
         switchTo().parentFrame();
         click(checkOrder);
         pay.shouldBe(Condition.visible);
+        logger.info("Set payment data");
         return new CheckoutPage();
     }
-//    @Step("Оплатити")
     public void pay() {
         pay.shouldBe(Condition.exist);
         click(pay);
+        logger.info("Paid for product");
     }
 
     public SelenideElement getThankYouText() {
         return thankYou;
     }
-//    @Step("Авторизація на сторінці чекаута")
     public CheckoutPage checkoutLogin(String checkoutLogin, String checkoutPass) {
         loginCheckout.sendKeys(checkoutLogin);
         passCheckout.sendKeys(checkoutPass);
         click(signUpCheckout);
+        logger.info("Logged in at checkout");
         return new CheckoutPage();
     }
 }
