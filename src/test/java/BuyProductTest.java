@@ -20,7 +20,6 @@ public class BuyProductTest extends BaseTest {
 
     @Description("Тест на покупку підписки Premium")
     @Test(description = "Тест на покупку підписки Premium", retryAnalyzer = RetryAnalyzer.class)
-    @Step("Покупка Преміума")
     void buyPremiumTest() {
         openPremiumPage();
         checkoutPage.acceptCookie()
@@ -39,7 +38,6 @@ public class BuyProductTest extends BaseTest {
 
     @Description("Тест на успішну покупку товара авторизованим користувачем")
     @Test(description = "Тест на успішну покупку товара авторизованим користувачем", retryAnalyzer = RetryAnalyzer.class)
-    @Step("Покупка Продукта")
     void purchaseProductTest() throws IOException {
         openProductPage();
         authPage.acceptCookie()

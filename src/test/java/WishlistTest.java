@@ -14,7 +14,6 @@ public class WishlistTest extends BaseTest {
 
     @Description("Тест на додання товара до вішліста")
     @Test(description = "Тест на коректний пошук довільного товара", retryAnalyzer = RetryAnalyzer.class)
-    @Step("Додати до обраного")
     void addToWishlistTest() {
         openProductPage();
         pdPage.acceptCookie();
@@ -26,7 +25,6 @@ public class WishlistTest extends BaseTest {
 
     @Description("Тест на видалення товара з вішліста")
     @Test(description = "Тест на коректний пошук довільного товара", retryAnalyzer = RetryAnalyzer.class)
-    @Step("Прибрати з обраного")
     void removeFromWishlistTest() {
         openProductPage();
         pdPage.acceptCookie();
