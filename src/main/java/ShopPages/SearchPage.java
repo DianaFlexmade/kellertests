@@ -12,7 +12,6 @@ public class SearchPage extends BasePage {
     public SelenideElement getSearchResult(){
         return searchResult;
     }
-//    @Step("Обрати рекомендований продукт")
     public void selectRecommendedProduct() {
         click(recommendedProduct);
     }

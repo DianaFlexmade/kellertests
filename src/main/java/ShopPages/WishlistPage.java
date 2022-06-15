@@ -11,13 +11,11 @@ public class WishlistPage extends BasePage {
     public SelenideElement checkWishlistAmount() {
         return $(".wishlist__amount");
     }
-//    @Step("Видалити з обраного")
     public WishlistPage removeItemFromWishlist() {
         removeElement.should(Condition.exist);
         click(removeElement);
         return new WishlistPage();
     }
-//    @Step("Видалити текст")
     public SelenideElement removeText() {
         return $(".product-layer__text");
     }
