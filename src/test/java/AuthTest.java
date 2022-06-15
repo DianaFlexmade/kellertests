@@ -11,8 +11,8 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class AuthTest extends BaseTest{
-    LoginPage authPage = new LoginPage();
 
+    LoginPage authPage = new LoginPage();
     @BeforeMethod
     void openPage() {
         openMainPage();
@@ -20,7 +20,9 @@ public class AuthTest extends BaseTest{
 
     @Description("Тест на успішну авторизацію користувача")
     @Test(description = "Тест на успішну авторизацію користувача", retryAnalyzer = RetryAnalyzer.class)
+    @Step("Успішна реєстрація")
     public void successAuthTest() throws IOException {
+
         authPage.authorizeUser(ConfigReader.getUsername(), ConfigReader.getPassword())
                 .getLoggedIn().shouldBe(Condition.visible);
         Assert.assertTrue(authPage.getLoggedIn().exists());
@@ -28,6 +30,7 @@ public class AuthTest extends BaseTest{
 
     @Description("Тест на неуспішну авторизацію із неправильним паролем")
     @Test(description = "Тест на неуспішну авторизацію із неправильним паролем", retryAnalyzer = RetryAnalyzer.class)
+    @Step("Авторизація з невірним паролем")
     void wrongPassAuthTest() throws IOException {
         authPage.authorizeUser(ConfigReader.getUsername(), "19111993test")
                 .getWrongPassMessage().shouldHave(Condition.text("Please check your e-mail address and password."));

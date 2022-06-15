@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="Crossbrowser Tests" verbose="1">
+<suite name="Crossbrowser Tests" verbose="1" parallel="methods" thread-count="2">
     <test name="Test in Firefox" >
         <parameter name="browser" value="firefox"/>
         <classes>

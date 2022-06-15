@@ -3,7 +3,6 @@ package ShopPages;
 import com.codeborne.selenide.ClickOptions;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
@@ -62,7 +61,7 @@ public class CheckoutPage extends BasePage {
         click(registerCheckout);
         return new CheckoutPage();
     }
-    @Step("Перейти до оплати")
+
     public CheckoutPage goToPayment() {
         continueToPayment.shouldBe(Condition.visible);
         click(continueToPayment);
@@ -77,7 +76,7 @@ public class CheckoutPage extends BasePage {
         addedPremium.should(Condition.exist);
         return new CheckoutPage();
     }
-    @Step("Додати адресу")
+//    @Step("Додати адресу")
     public CheckoutPage setPersonalDataForPremium() {
         genderSelect.shouldBe(Condition.visible);
         click(genderSelect);
@@ -99,7 +98,7 @@ public class CheckoutPage extends BasePage {
         return new CheckoutPage();
     }
 
-    @Step("Додати кредитну картку")
+//    @Step("Додати кредитну картку")
     public CheckoutPage setPaymentData() {
         iframeForCardNumber.shouldBe(Condition.visible);
         switchTo().frame(iframeForCardNumber);
@@ -119,7 +118,7 @@ public class CheckoutPage extends BasePage {
         pay.shouldBe(Condition.visible);
         return new CheckoutPage();
     }
-    @Step("Оплатити")
+//    @Step("Оплатити")
     public void pay() {
         pay.shouldBe(Condition.exist);
         click(pay);
@@ -128,7 +127,7 @@ public class CheckoutPage extends BasePage {
     public SelenideElement getThankYouText() {
         return thankYou;
     }
-    @Step("Авторизація на сторінці чекаута")
+//    @Step("Авторизація на сторінці чекаута")
     public CheckoutPage checkoutLogin(String checkoutLogin, String checkoutPass) {
         loginCheckout.sendKeys(checkoutLogin);
         passCheckout.sendKeys(checkoutPass);

@@ -2,7 +2,6 @@ package ShopPages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -12,13 +11,13 @@ public class WishlistPage extends BasePage {
     public SelenideElement checkWishlistAmount() {
         return $(".wishlist__amount");
     }
-    @Step("Видалити з обраного")
+//    @Step("Видалити з обраного")
     public WishlistPage removeItemFromWishlist() {
         removeElement.should(Condition.exist);
         click(removeElement);
         return new WishlistPage();
     }
-    @Step("Видалити текст")
+//    @Step("Видалити текст")
     public SelenideElement removeText() {
         return $(".product-layer__text");
     }
