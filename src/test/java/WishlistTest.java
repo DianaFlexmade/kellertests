@@ -3,10 +3,10 @@ import ShopPages.WishlistPage;
 import com.codeborne.selenide.Condition;
 import helpers.RetryAnalyzer;
 import io.qameta.allure.Description;
-import io.qameta.allure.Step;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import static com.codeborne.selenide.Selenide.open;
 
 public class WishlistTest extends BaseTest {
     PDPage pdPage = new PDPage();
@@ -14,7 +14,7 @@ public class WishlistTest extends BaseTest {
     @Description("Тест на додання товара до вішліста")
     @Test(description = "Тест на коректний пошук довільного товара", retryAnalyzer = RetryAnalyzer.class)
     void addToWishlistTest() {
-        openProductPage();
+        open("/p/nike-fury-3.0-headband-REQNI00O000.html");
         pdPage.acceptCookie();
         pdPage.addToWishlist()
                 .goToWishlist()
@@ -25,7 +25,7 @@ public class WishlistTest extends BaseTest {
     @Description("Тест на видалення товара з вішліста")
     @Test(description = "Тест на коректний пошук довільного товара", retryAnalyzer = RetryAnalyzer.class)
     void removeFromWishlistTest() {
-        openProductPage();
+        open("/p/nike-fury-3.0-headband-REQNI00O000.html");
         pdPage.acceptCookie();
         pdPage.addToWishlist()
                 .goToWishlist();

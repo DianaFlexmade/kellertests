@@ -20,3 +20,4 @@ public class ConfigReader {
         return getPropertyObject().getProperty("password");
     }
 }
+

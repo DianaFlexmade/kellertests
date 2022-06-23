@@ -2,9 +2,6 @@ package ShopPages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import static com.codeborne.selenide.Selenide.$;
 
 public class WishlistPage extends BasePage {
@@ -23,7 +20,4 @@ public class WishlistPage extends BasePage {
     {
         return $(".product-layer__text");
     }
-
 }
-
-

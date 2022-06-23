@@ -9,14 +9,15 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.actions;
 
 public class PDPage extends BasePage{
-    private final SelenideElement addPremiumToBasket = $(byXpath("//button[@class=\"premium-details__button\"]"));
+    private final SelenideElement premiumButton = $(byXpath("//button[@class=\"premium-details__button\"]"));
     private final SelenideElement pdpWishlistIcon = $("div .wishlist-heart--animated");
     private final SelenideElement wishListButton = $(".js-miniwishlist");
     private final SelenideElement basketCount = $("#js_product_quantity");
+    private final SelenideElement addPremiumToBasketButton = $(byText("Add to basket"));
 
     public PDPage addProductToBasket() {
-        actions().moveToElement($(byText("Add to basket"))).perform();
-        click($(byText("Add to basket")));
+        actions().moveToElement(addPremiumToBasketButton).perform();
+        click(addPremiumToBasketButton);
         logger.info("Added product to basket");
         return new PDPage();
     }
@@ -33,7 +34,7 @@ public class PDPage extends BasePage{
     }
 
     public PDPage buyPremium() {
-        addPremiumToBasket.click(usingDefaultMethod().timeout(Duration.ofSeconds(8)));
+        premiumButton.click(usingDefaultMethod().timeout(Duration.ofSeconds(8)));
         return new PDPage();
     }
     public SelenideElement getBasketCount() {

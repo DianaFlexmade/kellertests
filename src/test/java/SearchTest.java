@@ -1,20 +1,18 @@
 import ShopPages.SearchPage;
 import helpers.RetryAnalyzer;
 import io.qameta.allure.Description;
-import io.qameta.allure.Step;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import static com.codeborne.selenide.Selenide.open;
 
 public class SearchTest extends BaseTest {
     SearchPage searchPage = new SearchPage();
-    @BeforeMethod
-    void openPage() {
-        openMainPage();
-    }
+
     @Description("Тест на коректний пошук рекомендованого товара")
     @Test(description = "Тест на коректний пошук рекомендованого товара", retryAnalyzer = RetryAnalyzer.class)
     void recommendedItemSearchTest() {
+        open("/");
         searchPage.acceptCookie()
                 .clickOnSearchIcon()
                 .selectRecommendedProduct();
@@ -23,11 +21,11 @@ public class SearchTest extends BaseTest {
 
     @Description("Тест на коректний пошук довільного товара")
     @Test(description = "Тест на коректний пошук довільного товара", retryAnalyzer = RetryAnalyzer.class)
-    void successfulSearchTest() {
+    void successfulSearchTest()  {
+        open("/");
         searchPage.acceptCookie()
                 .clickOnSearchIcon()
                 .search("Adidas");
         Assert.assertTrue(searchPage.getSearchResult().text().contains("SEARCH RESULTS FOR \"ADIDAS\""));
     }
-
 }

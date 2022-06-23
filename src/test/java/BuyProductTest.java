@@ -6,11 +6,12 @@ import com.github.javafaker.Faker;
 import helpers.ConfigReader;
 import helpers.RetryAnalyzer;
 import io.qameta.allure.Description;
-import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+
+import static com.codeborne.selenide.Selenide.open;
 
 public class BuyProductTest extends BaseTest {
     Faker faker = new Faker();
@@ -21,12 +22,12 @@ public class BuyProductTest extends BaseTest {
     @Description("Тест на покупку підписки Premium")
     @Test(description = "Тест на покупку підписки Premium", retryAnalyzer = RetryAnalyzer.class)
     void buyPremiumTest() {
-        openPremiumPage();
+        open("/premium-membership");
         checkoutPage.acceptCookie()
                 .isCountryLayerVisible();
         pdPage.buyPremium()
                 .getBasketCount().shouldHave(Condition.text("1"));
-        openCheckoutPage();
+        open("https://keller:sports17@checkout-stage.keller-sports.com");
         checkoutPage.getAddedPremium()
                 .goToCheckout()
                 .checkoutRegister("test", "test", faker.internet().emailAddress(), "19111994qQ!")
@@ -38,13 +39,13 @@ public class BuyProductTest extends BaseTest {
 
     @Description("Тест на успішну покупку товара авторизованим користувачем")
     @Test(description = "Тест на успішну покупку товара авторизованим користувачем", retryAnalyzer = RetryAnalyzer.class)
-    void purchaseProductTest() throws IOException {
-        openProductPage();
+    void buyProductTest() throws IOException {
+        open("/p/nike-fury-3.0-headband-REQNI00O000.html");
         authPage.acceptCookie()
                 .isCountryLayerVisible();
         pdPage.addProductToBasket()
                 .getBasketCount().shouldHave(Condition.text("1"));
-        openCheckoutPage();
+        open("https://keller:sports17@checkout-stage.keller-sports.com");
         checkoutPage.getAddedProduct()
                 .goToCheckout()
                 .checkoutLogin(ConfigReader.getUsername(), ConfigReader.getPassword())

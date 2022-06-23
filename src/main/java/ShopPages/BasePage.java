@@ -2,7 +2,6 @@ package ShopPages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-
 import org.openqa.selenium.Keys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +13,6 @@ public class BasePage {
     Logger logger = LoggerFactory.getLogger(BasePage.class);
     private final SelenideElement searchField = $("#searchParamDesktop");
     private final SelenideElement searchIcon = $(".test-search-popup-button");
-
     public void click(SelenideElement element) {
         element.click();
     }
