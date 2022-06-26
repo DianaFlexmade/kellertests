@@ -14,7 +14,7 @@ public class AuthTest extends BaseTest{
     LoginPage authPage = new LoginPage();
 
     @Description("Тест на успішну авторизацію користувача")
-    @Test(description = "Тест на успішну авторизацію користувача", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Тест на успішну авторизацію користувача")
     public void successAuthTest() throws IOException {
         open("/");
         authPage.authorizeUser(ConfigReader.getUsername(), ConfigReader.getPassword())

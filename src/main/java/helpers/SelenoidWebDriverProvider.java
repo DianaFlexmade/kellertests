@@ -15,8 +15,8 @@ public class SelenoidWebDriverProvider implements WebDriverProvider {
     @Override
     public WebDriver createDriver(Capabilities Capabilities) {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("browserName", "firefox");
-        capabilities.setCapability("browserVersion", "101.0");
+        capabilities.setCapability("browserName", "chrome");
+        capabilities.setCapability("browserVersion", "102.0");
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
                 "enableVideo", false

@@ -20,7 +20,7 @@ public class BuyProductTest extends BaseTest {
     CheckoutPage checkoutPage = new CheckoutPage();
 
     @Description("Тест на покупку підписки Premium")
-    @Test(description = "Тест на покупку підписки Premium", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Тест на покупку підписки Premium")
     void buyPremiumTest() {
         open("/premium-membership");
         checkoutPage.acceptCookie()

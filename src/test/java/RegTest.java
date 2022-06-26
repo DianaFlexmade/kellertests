@@ -16,7 +16,7 @@ public class RegTest extends BaseTest {
 
 
     @Description("Тест на успішну реєстрацію користувача")
-    @Test(description = "Тест на успішну реєстрацію користувача", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Тест на успішну реєстрацію користувача")
     void successRegTest() {
         open("/");
         authPage.registerUser(email, "TestPassword1!", "TestPassword1!");

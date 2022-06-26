@@ -11,14 +11,15 @@ import static com.codeborne.selenide.Selenide.open;
 public class WishlistTest extends BaseTest {
     PDPage pdPage = new PDPage();
     WishlistPage wishlistPage = new WishlistPage();
+
     @Description("Тест на додання товара до вішліста")
-    @Test(description = "Тест на коректний пошук довільного товара", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Тест на коректний пошук довільного товара")
     void addToWishlistTest() {
         open("/p/nike-fury-3.0-headband-REQNI00O000.html");
         pdPage.acceptCookie();
         pdPage.addToWishlist()
                 .goToWishlist()
-                .checkWishlistAmount().should(Condition.exist);
+                .checkWishlistAmount();
         Assert.assertEquals(wishlistPage.checkWishlistAmount().text(), "1");
     }
 

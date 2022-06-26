@@ -102,7 +102,7 @@ public class CheckoutPage extends BasePage {
     }
 
     public CheckoutPage setPaymentData() {
-        iframeForCardNumber.shouldBe(Condition.visible);
+        iframeForCardNumber.should(Condition.exist);
         switchTo().frame(iframeForCardNumber);
         cardNumber.sendKeys("4000060000000006");
         switchTo().parentFrame();
@@ -117,7 +117,7 @@ public class CheckoutPage extends BasePage {
         cardCvv.sendKeys("737");
         switchTo().parentFrame();
         click(checkOrder);
-        pay.shouldBe(Condition.visible);
+        pay.should(Condition.exist);
         logger.info("Set payment data");
         return new CheckoutPage();
     }

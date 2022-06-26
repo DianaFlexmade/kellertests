@@ -13,20 +13,22 @@ public class BasePage {
     Logger logger = LoggerFactory.getLogger(BasePage.class);
     private final SelenideElement searchField = $("#searchParamDesktop");
     private final SelenideElement searchIcon = $(".test-search-popup-button");
+    private final SelenideElement cookiesPopup = $("#uc-btn-accept-banner");
     public void click(SelenideElement element) {
         element.click();
     }
 
     public BasePage acceptCookie() {
-        $("#uc-btn-accept-banner").click();
-        return new BasePage();
+        cookiesPopup.should(Condition.exist);
+        click(cookiesPopup);
+        return this;
     }
     public BasePage isCountryLayerVisible() {
         if ($("#js_country-layer-close-icon").is(Condition.visible)) {
             $("#js_country-layer-close-icon").click();
-            return new BasePage();
+            return this;
         }
-        return new BasePage();
+        return this;
     }
     public SearchPage clickOnSearchIcon() {
         click(searchIcon);

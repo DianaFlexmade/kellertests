@@ -10,7 +10,7 @@ public class SearchTest extends BaseTest {
     SearchPage searchPage = new SearchPage();
 
     @Description("Тест на коректний пошук рекомендованого товара")
-    @Test(description = "Тест на коректний пошук рекомендованого товара", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Тест на коректний пошук рекомендованого товара")
     void recommendedItemSearchTest() {
         open("/");
         searchPage.acceptCookie()
