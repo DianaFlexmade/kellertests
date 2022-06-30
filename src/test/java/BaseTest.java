@@ -1,21 +1,22 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeClass;
 
 abstract public class BaseTest {
-    protected final Logger logger = LoggerFactory.getLogger(BaseTest.class);
 
-    @BeforeMethod
+    @BeforeClass
     public void setUp() {
-        Configuration.browser = "helpers.SelenoidWebDriverProvider";
-        Configuration.browserSize = "1920x1080";
-        Configuration.timeout = 10000;
+        Configuration.remote = "http://localhost:4444/wd/hub";
         Configuration.baseUrl = "https://keller:sports17@stage.keller-sports.com";
-        logger.info("Selenoid is up");
+        Configuration.browserSize = "1920x1080";
+        Configuration.timeout = 15000;
+        Configuration.browser = "chrome";
+        DesiredCapabilities browser = new DesiredCapabilities();
+        browser.setCapability("enableVNC", true);
+        browser.setCapability("enableVideo", true);
+        Configuration.browserCapabilities = browser;
     }
 
     @AfterMethod

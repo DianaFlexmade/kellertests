@@ -20,7 +20,8 @@
                 <configuration>
                     <parallel>classes</parallel>
                     <threadCountMethods>2</threadCountMethods>
-                    <rerunFailingTestsCount>1</rerunFailingTestsCount>
+                    <perCoreThreadCount>true</perCoreThreadCount>
+                    <forkCount>2</forkCount>
                 </configuration>
             </plugin>
         </plugins>
@@ -29,7 +30,7 @@
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
-            <version>6.6.3</version>
+            <version>6.6.5</version>
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>

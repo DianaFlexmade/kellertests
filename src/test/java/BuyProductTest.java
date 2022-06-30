@@ -21,10 +21,9 @@ public class BuyProductTest extends BaseTest {
 
     @Description("Тест на покупку підписки Premium")
     @Test(description = "Тест на покупку підписки Premium")
-    void buyPremiumTest() {
+    void buyPremiumTest()  {
         open("/premium-membership");
-        checkoutPage.acceptCookie()
-                .isCountryLayerVisible();
+        checkoutPage.acceptCookie();
         pdPage.buyPremium()
                 .getBasketCount().shouldHave(Condition.text("1"));
         open("https://keller:sports17@checkout-stage.keller-sports.com");
@@ -41,8 +40,7 @@ public class BuyProductTest extends BaseTest {
     @Test(description = "Тест на успішну покупку товара авторизованим користувачем", retryAnalyzer = RetryAnalyzer.class)
     void buyProductTest() throws IOException {
         open("/p/nike-fury-3.0-headband-REQNI00O000.html");
-        authPage.acceptCookie()
-                .isCountryLayerVisible();
+        authPage.acceptCookie();
         pdPage.addProductToBasket()
                 .getBasketCount().shouldHave(Condition.text("1"));
         open("https://keller:sports17@checkout-stage.keller-sports.com");

@@ -16,16 +16,16 @@ public class SearchTest extends BaseTest {
         searchPage.acceptCookie()
                 .clickOnSearchIcon()
                 .selectRecommendedProduct();
-        Assert.assertTrue(searchPage.getSearchResult().text().contains("SEARCH RESULTS FOR \"NIKE METCON\""));
+        Assert.assertTrue(searchPage.getSearchResultText().contains("SEARCH RESULTS FOR \"NIKE METCON\""));
     }
 
     @Description("Тест на коректний пошук довільного товара")
-    @Test(description = "Тест на коректний пошук довільного товара", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Тест на коректний пошук довільного товара")
     void successfulSearchTest()  {
         open("/");
         searchPage.acceptCookie()
                 .clickOnSearchIcon()
                 .search("Adidas");
-        Assert.assertTrue(searchPage.getSearchResult().text().contains("SEARCH RESULTS FOR \"ADIDAS\""));
+        Assert.assertTrue(searchPage.getSearchResultText().contains("SEARCH RESULTS FOR \"ADIDAS\""));
     }
 }

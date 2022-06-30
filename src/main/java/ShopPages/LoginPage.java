@@ -41,7 +41,7 @@ public class LoginPage extends BasePage {
     public void registerUser(String emailFieldValue, String passwordFieldValue, String repeatPasswordFieldValue) {
         LoginPage loginPage = new LoginPage();
         loginPage.acceptCookie();
-        loginPage.isCountryLayerVisible();
+//        loginPage.isCountryLayerVisible();
         loginPage.openLoginPage();
         click($( ".test-register-popup-button"));
         loginPage.openRegPageText().shouldHave(Condition.exactText("CREATE CUSTOMER ACCOUNT"));
@@ -57,7 +57,7 @@ public class LoginPage extends BasePage {
     public LoginPage authorizeUser(String emailFieldValue, String passwordFieldValue) {
         LoginPage loginPage = new LoginPage();
         loginPage.acceptCookie();
-        loginPage.isCountryLayerVisible();
+//        loginPage.isCountryLayerVisible();
         loginPage.openLoginPage();
         click(loginField);
         loginField.sendKeys(emailFieldValue);

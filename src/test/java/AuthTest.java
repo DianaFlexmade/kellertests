@@ -15,11 +15,11 @@ public class AuthTest extends BaseTest{
 
     @Description("Тест на успішну авторизацію користувача")
     @Test(description = "Тест на успішну авторизацію користувача")
-    public void successAuthTest() throws IOException {
+    public void successAuthTest() throws IOException, InterruptedException {
         open("/");
-        authPage.authorizeUser(ConfigReader.getUsername(), ConfigReader.getPassword())
-                .getLoggedIn().shouldBe(Condition.visible);
-        Assert.assertTrue(authPage.getLoggedIn().exists());
+        authPage.authorizeUser(ConfigReader.getUsername(), ConfigReader.getPassword());
+                Thread.sleep(5000);
+        Assert.assertTrue(authPage.getLoggedIn().isDisplayed());
     }
 
     @Description("Тест на неуспішну авторизацію із неправильним паролем")

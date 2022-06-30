@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.Assert;
 
 
 import static com.codeborne.selenide.Selenide.$;
@@ -14,6 +15,8 @@ public class BasePage {
     private final SelenideElement searchField = $("#searchParamDesktop");
     private final SelenideElement searchIcon = $(".test-search-popup-button");
     private final SelenideElement cookiesPopup = $("#uc-btn-accept-banner");
+    private final SelenideElement countryLayer = $("#js_country-layer-close-icon");
+
     public void click(SelenideElement element) {
         element.click();
     }
@@ -23,12 +26,12 @@ public class BasePage {
         click(cookiesPopup);
         return this;
     }
-    public BasePage isCountryLayerVisible() {
-        if ($("#js_country-layer-close-icon").is(Condition.visible)) {
-            $("#js_country-layer-close-icon").click();
+    public Object isCountryLayerVisible() {
+        if (countryLayer.is(Condition.visible)) {
+            countryLayer.click();
             return this;
         }
-        return this;
+        else return null;
     }
     public SearchPage clickOnSearchIcon() {
         click(searchIcon);

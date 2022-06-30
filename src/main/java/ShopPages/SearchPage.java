@@ -9,8 +9,8 @@ import static com.codeborne.selenide.Selenide.$;
 public class SearchPage extends BasePage {
     private final SelenideElement searchResult = $("div > .search__headline");
     private final SelenideElement recommendedProduct = $(byXpath("(//a[@class='keywords__list-link']) [2]"));
-    public SelenideElement getSearchResult(){
-        return searchResult;
+    public String getSearchResultText(){
+        return searchResult.text();
     }
     public void selectRecommendedProduct() {
         click(recommendedProduct);

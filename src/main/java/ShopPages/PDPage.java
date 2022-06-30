@@ -3,7 +3,6 @@ package ShopPages;
 import com.codeborne.selenide.SelenideElement;
 import java.time.Duration;
 import static com.codeborne.selenide.ClickOptions.usingDefaultMethod;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.actions;
@@ -13,11 +12,11 @@ public class PDPage extends BasePage{
     private final SelenideElement pdpWishlistIcon = $("div .wishlist-heart--animated");
     private final SelenideElement wishListButton = $(".js-miniwishlist");
     private final SelenideElement basketCount = $("#js_product_quantity");
-    private final SelenideElement addPremiumToBasketButton = $(byText("Add to basket"));
+    private final SelenideElement addToBasketButton = $(byXpath("//a[@class=\"add-to-cart test-add-to-cart-button animated-button animated-button--cart\"]"));
 
     public PDPage addProductToBasket() {
-        actions().moveToElement(addPremiumToBasketButton).perform();
-        click(addPremiumToBasketButton);
+        actions().moveToElement(addToBasketButton).perform();
+        click(addToBasketButton);
         logger.info("Added product to basket");
         return new PDPage();
     }
